@@ -12,6 +12,7 @@
 		011C5CE7285B2D76001D461E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 011C5CE6285B2D76001D461E /* Assets.xcassets */; };
 		011C5CEA285B2D76001D461E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 011C5CE9285B2D76001D461E /* Preview Assets.xcassets */; };
 		011C5CF1285B34BF001D461E /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 011C5CF0285B34BF001D461E /* Launch Screen.storyboard */; };
+		011C5CF4285B5A30001D461E /* ReSwiftSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 011C5CF3285B5A30001D461E /* ReSwiftSwiftUI */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				011C5CF4285B5A30001D461E /* ReSwiftSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,6 +88,9 @@
 			dependencies = (
 			);
 			name = Blog;
+			packageProductDependencies = (
+				011C5CF3285B5A30001D461E /* ReSwiftSwiftUI */,
+			);
 			productName = Blog;
 			productReference = 011C5CDF285B2D73001D461E /* Blog.app */;
 			productType = "com.apple.product-type.application";
@@ -114,6 +119,9 @@
 				Base,
 			);
 			mainGroup = 011C5CD6285B2D73001D461E;
+			packageReferences = (
+				011C5CF2285B5A30001D461E /* XCRemoteSwiftPackageReference "ReSwift-SwiftUI" */,
+			);
 			productRefGroup = 011C5CE0285B2D73001D461E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -345,6 +353,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		011C5CF2285B5A30001D461E /* XCRemoteSwiftPackageReference "ReSwift-SwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:ReSwift/ReSwift-SwiftUI.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		011C5CF3285B5A30001D461E /* ReSwiftSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 011C5CF2285B5A30001D461E /* XCRemoteSwiftPackageReference "ReSwift-SwiftUI" */;
+			productName = ReSwiftSwiftUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 011C5CD7285B2D73001D461E /* Project object */;
 }
