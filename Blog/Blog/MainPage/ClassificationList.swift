@@ -14,6 +14,7 @@ struct ClassificationList: View {
       let list = item.detail ?? []
       ForEach(list) { item in
         NavigationLink {
+          BlogContentView(webViewModel: WebViewModel(url: item.link))
         } label: {
           ClassificationDetailCell(item: item)
         }
@@ -35,6 +36,6 @@ struct ClassificationDetailCell: View {
 
 struct ClassificationList_Previews: PreviewProvider {
   static var previews: some View {
-    ClassificationList(item: Classification(type: "", name: "ceshi", detail: [ClassificationDetail(title: "hahah", link: "")]))
+    ClassificationList(item: Classification(type: "", name: "ceshi", detail: [ClassificationDetail(title: "hahah", link: "https://www.baidu.com")]))
   }
 }

@@ -18,6 +18,7 @@
 		015E3D7B285C81B9008F52C1 /* MainPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015E3D7A285C81B9008F52C1 /* MainPage.swift */; };
 		015E3D7D285C83FB008F52C1 /* BlogClassificationDetail.json in Resources */ = {isa = PBXBuildFile; fileRef = 015E3D7C285C83FB008F52C1 /* BlogClassificationDetail.json */; };
 		015E3D7F285C918D008F52C1 /* ClassificationList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015E3D7E285C918D008F52C1 /* ClassificationList.swift */; };
+		015E3D81285C96C5008F52C1 /* BlogContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015E3D80285C96C5008F52C1 /* BlogContentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		015E3D7A285C81B9008F52C1 /* MainPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPage.swift; sourceTree = "<group>"; };
 		015E3D7C285C83FB008F52C1 /* BlogClassificationDetail.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = BlogClassificationDetail.json; sourceTree = "<group>"; };
 		015E3D7E285C918D008F52C1 /* ClassificationList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassificationList.swift; sourceTree = "<group>"; };
+		015E3D80285C96C5008F52C1 /* BlogContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 				015E3D7A285C81B9008F52C1 /* MainPage.swift */,
 				015E3D76285C812B008F52C1 /* MainPageCell.swift */,
 				015E3D7E285C918D008F52C1 /* ClassificationList.swift */,
+				015E3D80285C96C5008F52C1 /* BlogContentView.swift */,
 			);
 			path = MainPage;
 			sourceTree = "<group>";
@@ -185,6 +188,7 @@
 			files = (
 				015E3D7F285C918D008F52C1 /* ClassificationList.swift in Sources */,
 				015E3D7B285C81B9008F52C1 /* MainPage.swift in Sources */,
+				015E3D81285C96C5008F52C1 /* BlogContentView.swift in Sources */,
 				0148DC70285C26A700AA92C3 /* BlogAPI.swift in Sources */,
 				015E3D78285C812B008F52C1 /* MainPageCell.swift in Sources */,
 				011C5CE3285B2D73001D461E /* BlogApp.swift in Sources */,
