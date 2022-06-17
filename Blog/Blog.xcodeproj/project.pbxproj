@@ -19,6 +19,7 @@
 		015E3D7D285C83FB008F52C1 /* BlogClassificationDetail.json in Resources */ = {isa = PBXBuildFile; fileRef = 015E3D7C285C83FB008F52C1 /* BlogClassificationDetail.json */; };
 		015E3D7F285C918D008F52C1 /* ClassificationList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015E3D7E285C918D008F52C1 /* ClassificationList.swift */; };
 		015E3D81285C96C5008F52C1 /* BlogContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015E3D80285C96C5008F52C1 /* BlogContentView.swift */; };
+		015E3D84285CA2CF008F52C1 /* bookmarks_2022_6_17.html in Resources */ = {isa = PBXBuildFile; fileRef = 015E3D83285CA2CF008F52C1 /* bookmarks_2022_6_17.html */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,8 @@
 		015E3D7C285C83FB008F52C1 /* BlogClassificationDetail.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = BlogClassificationDetail.json; sourceTree = "<group>"; };
 		015E3D7E285C918D008F52C1 /* ClassificationList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassificationList.swift; sourceTree = "<group>"; };
 		015E3D80285C96C5008F52C1 /* BlogContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogContentView.swift; sourceTree = "<group>"; };
+		015E3D82285CA147008F52C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		015E3D83285CA2CF008F52C1 /* bookmarks_2022_6_17.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = bookmarks_2022_6_17.html; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +70,7 @@
 		011C5CE1285B2D73001D461E /* Blog */ = {
 			isa = PBXGroup;
 			children = (
+				015E3D82285CA147008F52C1 /* Info.plist */,
 				011C5CE2285B2D73001D461E /* BlogApp.swift */,
 				015E3D75285C812B008F52C1 /* MainPage */,
 				0148DC74285C278D00AA92C3 /* Source */,
@@ -91,6 +95,7 @@
 				0148DC75285C27B200AA92C3 /* BlogClassification.json */,
 				015E3D7C285C83FB008F52C1 /* BlogClassificationDetail.json */,
 				0148DC6F285C26A700AA92C3 /* BlogAPI.swift */,
+				015E3D83285CA2CF008F52C1 /* bookmarks_2022_6_17.html */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -174,6 +179,7 @@
 				011C5CF1285B34BF001D461E /* Launch Screen.storyboard in Resources */,
 				011C5CEA285B2D76001D461E /* Preview Assets.xcassets in Resources */,
 				011C5CE7285B2D76001D461E /* Assets.xcassets in Resources */,
+				015E3D84285CA2CF008F52C1 /* bookmarks_2022_6_17.html in Resources */,
 				015E3D7D285C83FB008F52C1 /* BlogClassificationDetail.json in Resources */,
 				0148DC76285C27B200AA92C3 /* BlogClassification.json in Resources */,
 			);
@@ -323,6 +329,7 @@
 				DEVELOPMENT_TEAM = 6RJF36GSD8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Blog/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -353,6 +360,7 @@
 				DEVELOPMENT_TEAM = 6RJF36GSD8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Blog/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

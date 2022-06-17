@@ -98,10 +98,58 @@
     {
       "type":"2",
       "name":"音视频",
+      "detail": [
+        {
+          "title":"iOS 本地视频和网络视频流播放实例代码_IOS_脚本之家",
+          "link":"http://www.jb51.net/article/117631.htm"
+        },
+        {
+          "title":"iOS 视频播放流程及原理 - 简书 ",
+          "link":"https://www.jianshu.com/p/5e09596dc6c1"
+        },
+        {
+          "title":"iOS 音视频采集与编码 - CSDN博客",
+          "link":"http://blog.csdn.net/Keep_Moving31038/article/details/77685609"
+        },
+        {
+          "title":"iOS m3u8本地缓存播放【实现控制下载并发、暂停恢复】_清屏网_在线知识学习平台",
+          "link":"http://www.qingpingshan.com/rjbc/ios/340887.html"
+        },
+        {
+          "title":"最简单的基于FFmpeg的移动端例子：IOS 视频解码器 - CSDN博客",
+          "link":"http://blog.csdn.net/leixiaohua1020/article/details/47072257"
+        },
+        {
+          "title":"1小时学会：最简单的iOS直播推流（三）使用系统接口捕获音视频数据 - 简书",
+          "link":"https://www.jianshu.com/p/19d07d5dd788"
+        },
+        {
+          "title":"iOS流媒体开发之三：HLS直播（M3U8）回看和下载功能的实现 - 简书",
+          "link":"https://www.jianshu.com/p/b0db841ed6d3%20"
+        },
+        {
+          "title":"iOS m3u8本地缓存播放(控制下载并发、暂停恢复) - 简书",
+          "link":"https://www.jianshu.com/p/c0a78d8ed231"
+        }
+        ]
     },
     {
       "type":"3",
       "name":"安全",
+      "detail": [
+        {
+          "title":"打造安全的App！iOS安全系列之 HTTPS - CocoaChina 苹果开发中文站 - 最热的iPhone开发社区 最热的苹果开发社区 最热的iPad开发社区 ",
+          "link":"http://www.cocoachina.com/ios/20150811/12947.html"
+        },
+        {
+          "title":"iOS 开发笔记-AFNetWorking https SSL认证 - jiangys - 博客园 ",
+          "link":"http://www.cnblogs.com/jys509/p/5001566.html"
+        },
+        {
+          "title":"iOS安全–使用Logify跟踪函数调用",
+          "link":"http://www.blogfshare.com/ioss-theos-logify.html"
+        },
+      ]
     },
     {
       "type":"4",
