@@ -10,7 +10,6 @@ import SwiftUI
 let mainPageStore = MainPageStore(state: MainPageState(), reducer: mainPageReducer)
 
 struct MainView: View {
-//  @State private var cls:[Classification] = []
   @EnvironmentObject var store: MainPageStore
   var body: some View {
     NavigationView {
@@ -34,6 +33,34 @@ struct MainView: View {
     }
   }
 }
+
+//let mainPageStore = Store<MainPageState>(state: MainPageState(), reducer: mainPageReducer)
+//
+//struct MainView: View {
+////  @State private var cls:[Classification] = []
+//  @EnvironmentObject var store: Store<MainPageState>
+//  var body: some View {
+//    NavigationView {
+//      List {
+//        ForEach(store.state?.list ?? []) { item in
+//          NavigationLink {
+//            ClassificationList(item: item)
+//          } label: {
+//            MainPageCell(item: item)
+//          }
+//        }
+//      }.navigationTitle(Text("Bookmarks"))
+//        .navigationBarTitleDisplayMode(.inline)
+//        .toolbar {
+//          Image(systemName: "arrow.clockwise").onTapGesture {
+//            store.dispatch(action: MainPageOnClickRefreshAction())
+//          }
+//        }
+//    }.onAppear {
+//      store.dispatch(action: MainPageOnClickRefreshAction())
+//    }
+//  }
+//}
 
 
 struct ContentView_Previews: PreviewProvider {

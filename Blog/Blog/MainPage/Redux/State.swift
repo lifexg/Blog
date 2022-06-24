@@ -12,3 +12,8 @@ struct MainPageState {
 }
 
 
+//protocol State { }
+//struct MainPageState:State {
+//  var list: [Classification] = []
+//}
+//

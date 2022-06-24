@@ -7,6 +7,13 @@
 
 import Foundation
 
+//protocol Action {}
+//
+//struct MainPageOnClickRefreshAction: Action {}
+//struct MainPageRefreshAction: Action {
+//  var list: [Classification]
+//}
+
 enum MainPageAction {
   case onClickRefresh
   case refresh(list: [Classification])

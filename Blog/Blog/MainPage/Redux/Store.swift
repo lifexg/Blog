@@ -18,7 +18,13 @@ class MainPageStore: ObservableObject {
   }
   
   func dispatch(action: MainPageAction) {
-    self.state = self.reducer(action, state)
+    if Thread.current.isMainThread {
+      self.state = self.reducer(action, state)
+    } else {
+      DispatchQueue.main.sync {
+        self.state = self.reducer(action, state)
+      }
+    }
   }
 }
 
@@ -30,3 +36,32 @@ extension MainPageState {
     }
   }
 }
+
+//open class Store<State>: ObservableObject {
+//  private let reducer: Reducer<State>
+//  @Published public var state: State?
+//
+//  init(state: State?, reducer: @escaping Reducer<State>) {
+//    self.state = state
+//    self.reducer = reducer
+//  }
+//
+//  func dispatch(action: Action) {
+//    if Thread.current.isMainThread {
+//      self.state = self.reducer(action, state)
+//    } else {
+//      DispatchQueue.main.sync {
+//        self.state = self.reducer(action, state)
+//      }
+//    }
+//  }
+//}
+//
+//extension MainPageState {
+//  func classificationList() {
+//    Task {
+//      let list = await Classification.classifications()
+//      mainPageStore.dispatch(action: MainPageRefreshAction(list: list))
+//    }
+//  }
+//}
