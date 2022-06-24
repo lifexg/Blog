@@ -65,7 +65,6 @@ struct MainView: View {
 
 struct ContentView_Previews: PreviewProvider {
   static var previews: some View {
-    MainView()
-      .previewInterfaceOrientation(.portrait)
+    MainView().environmentObject(mainPageStore)
   }
 }
