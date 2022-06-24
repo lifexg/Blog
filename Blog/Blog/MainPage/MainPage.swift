@@ -22,7 +22,7 @@ struct MainView: View {
           }
         }
       }.navigationTitle(Text("Bookmarks"))
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(.automatic)
         .toolbar {
           Image(systemName: "arrow.clockwise").onTapGesture {
             store.dispatch(action: .onClickRefresh)
