@@ -6,13 +6,16 @@
 //
 
 import SwiftUI
+import ReSwift
 
-let mainPageStore = MainPageStore(state: MainPageState(), reducer: mainPageReducer)
+let mainPageStore = Store<MainPageState>(reducer: mainPageReducer, state: MainPageState())
+
 
 struct MainView: View {
-  @EnvironmentObject var store: MainPageStore
+  @ObservedObject var store: ObservableStore<MainPageState>
   var body: some View {
     NavigationView {
+      
       List {
         ForEach(store.state.list) { item in
           NavigationLink {
@@ -22,49 +25,21 @@ struct MainView: View {
           }
         }
       }.navigationTitle(Text("Bookmarks"))
-        .navigationBarTitleDisplayMode(.automatic)
+        .navigationBarTitleDisplayMode(.inline)
         .toolbar {
           Image(systemName: "arrow.clockwise").onTapGesture {
-            store.dispatch(action: .onClickRefresh)
+            store.dispatch(MainPageOnClickRefreshAction())
           }
         }
     }.onAppear {
-      store.dispatch(action: .onClickRefresh)
+      store.dispatch(MainPageOnClickRefreshAction())
     }
   }
 }
 
-//let mainPageStore = Store<MainPageState>(state: MainPageState(), reducer: mainPageReducer)
-//
-//struct MainView: View {
-////  @State private var cls:[Classification] = []
-//  @EnvironmentObject var store: Store<MainPageState>
-//  var body: some View {
-//    NavigationView {
-//      List {
-//        ForEach(store.state?.list ?? []) { item in
-//          NavigationLink {
-//            ClassificationList(item: item)
-//          } label: {
-//            MainPageCell(item: item)
-//          }
-//        }
-//      }.navigationTitle(Text("Bookmarks"))
-//        .navigationBarTitleDisplayMode(.inline)
-//        .toolbar {
-//          Image(systemName: "arrow.clockwise").onTapGesture {
-//            store.dispatch(action: MainPageOnClickRefreshAction())
-//          }
-//        }
-//    }.onAppear {
-//      store.dispatch(action: MainPageOnClickRefreshAction())
-//    }
-//  }
-//}
-
 
 struct ContentView_Previews: PreviewProvider {
   static var previews: some View {
-    MainView().environmentObject(mainPageStore)
+    MainView(store: ObservableStore(store: mainPageStore))
   }
 }

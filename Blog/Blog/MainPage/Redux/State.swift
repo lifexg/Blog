@@ -6,14 +6,9 @@
 //
 
 import Foundation
+import ReSwift
 
 struct MainPageState {
   var list: [Classification] = []
 }
 
-
-//protocol State { }
-//struct MainPageState:State {
-//  var list: [Classification] = []
-//}
-//

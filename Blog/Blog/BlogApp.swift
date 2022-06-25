@@ -12,7 +12,7 @@ import SwiftUI
 struct BlogApp: App {
   var body: some Scene {
     WindowGroup {
-      MainView().environmentObject(mainPageStore)
+      MainView(store: ObservableStore(store: mainPageStore))
     }
   }
 }
