@@ -9,6 +9,11 @@ import Foundation
 import ReSwift
 
 struct MainPageOnClickRefreshAction: Action {}
+
 struct MainPageRefreshAction: Action {
   var list: [Classification]
+}
+
+struct MainPageAddFolderAction: Action {
+  
 }

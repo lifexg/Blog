@@ -11,7 +11,6 @@
 		011C5CE7285B2D76001D461E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 011C5CE6285B2D76001D461E /* Assets.xcassets */; };
 		011C5CEA285B2D76001D461E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 011C5CE9285B2D76001D461E /* Preview Assets.xcassets */; };
 		011C5CF1285B34BF001D461E /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 011C5CF0285B34BF001D461E /* Launch Screen.storyboard */; };
-		011C5CF4285B5A30001D461E /* ReSwiftSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 011C5CF3285B5A30001D461E /* ReSwiftSwiftUI */; };
 		0148DC70285C26A700AA92C3 /* BlogAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0148DC6F285C26A700AA92C3 /* BlogAPI.swift */; };
 		0148DC76285C27B200AA92C3 /* BlogClassification.json in Resources */ = {isa = PBXBuildFile; fileRef = 0148DC75285C27B200AA92C3 /* BlogClassification.json */; };
 		015E3D78285C812B008F52C1 /* MainPageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015E3D76285C812B008F52C1 /* MainPageCell.swift */; };
@@ -24,6 +23,7 @@
 		01FE532628659E8600CE6931 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FE532528659E8600CE6931 /* Store.swift */; };
 		01FE532828659E9800CE6931 /* Reducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FE532728659E9800CE6931 /* Reducer.swift */; };
 		01FE532A2865A0CB00CE6931 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FE53292865A0CB00CE6931 /* State.swift */; };
+		DA8538A1286823F000940584 /* ReSwift in Frameworks */ = {isa = PBXBuildFile; productRef = DA8538A0286823F000940584 /* ReSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,7 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				011C5CF4285B5A30001D461E /* ReSwiftSwiftUI in Frameworks */,
+				DA8538A1286823F000940584 /* ReSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,7 +150,7 @@
 			);
 			name = Blog;
 			packageProductDependencies = (
-				011C5CF3285B5A30001D461E /* ReSwiftSwiftUI */,
+				DA8538A0286823F000940584 /* ReSwift */,
 			);
 			productName = Blog;
 			productReference = 011C5CDF285B2D73001D461E /* Blog.app */;
@@ -182,7 +182,7 @@
 			);
 			mainGroup = 011C5CD6285B2D73001D461E;
 			packageReferences = (
-				011C5CF2285B5A30001D461E /* XCRemoteSwiftPackageReference "ReSwift-SwiftUI" */,
+				DA85389F286823F000940584 /* XCRemoteSwiftPackageReference "ReSwift" */,
 			);
 			productRefGroup = 011C5CE0285B2D73001D461E /* Products */;
 			projectDirPath = "";
@@ -438,21 +438,21 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		011C5CF2285B5A30001D461E /* XCRemoteSwiftPackageReference "ReSwift-SwiftUI" */ = {
+		DA85389F286823F000940584 /* XCRemoteSwiftPackageReference "ReSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "git@github.com:ReSwift/ReSwift-SwiftUI.git";
+			repositoryURL = "git@github.com:ReSwift/ReSwift.git";
 			requirement = {
-				branch = master;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		011C5CF3285B5A30001D461E /* ReSwiftSwiftUI */ = {
+		DA8538A0286823F000940584 /* ReSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 011C5CF2285B5A30001D461E /* XCRemoteSwiftPackageReference "ReSwift-SwiftUI" */;
-			productName = ReSwiftSwiftUI;
+			package = DA85389F286823F000940584 /* XCRemoteSwiftPackageReference "ReSwift" */;
+			productName = ReSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
