@@ -8,7 +8,7 @@
 import Foundation
 import ReSwift
 
-struct MainPageState {
+struct BGBookMarksPageState {
   var list: [Classification] = []
 }
 

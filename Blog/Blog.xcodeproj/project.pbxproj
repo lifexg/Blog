@@ -23,7 +23,8 @@
 		01FE532628659E8600CE6931 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FE532528659E8600CE6931 /* Store.swift */; };
 		01FE532828659E9800CE6931 /* Reducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FE532728659E9800CE6931 /* Reducer.swift */; };
 		01FE532A2865A0CB00CE6931 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FE53292865A0CB00CE6931 /* State.swift */; };
-		DA8538A1286823F000940584 /* ReSwift in Frameworks */ = {isa = PBXBuildFile; productRef = DA8538A0286823F000940584 /* ReSwift */; };
+		01FE533C2869962B00CE6931 /* ReSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 01FE533B2869962B00CE6931 /* ReSwift */; };
+		01FE53462869991800CE6931 /* BGUI in Frameworks */ = {isa = PBXBuildFile; productRef = 01FE53452869991800CE6931 /* BGUI */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		01FE532728659E9800CE6931 /* Reducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reducer.swift; sourceTree = "<group>"; };
 		01FE53292865A0CB00CE6931 /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
 		01FE532B2865DA2100CE6931 /* Blog.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Blog.entitlements; sourceTree = "<group>"; };
+		01FE53442869990700CE6931 /* BGUI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = BGUI; path = Blog/Module/BGUI; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,7 +55,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA8538A1286823F000940584 /* ReSwift in Frameworks */,
+				01FE533C2869962B00CE6931 /* ReSwift in Frameworks */,
+				01FE53462869991800CE6931 /* BGUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,8 +66,10 @@
 		011C5CD6285B2D73001D461E = {
 			isa = PBXGroup;
 			children = (
+				01FE533D2869969E00CE6931 /* Packages */,
 				011C5CE1285B2D73001D461E /* Blog */,
 				011C5CE0285B2D73001D461E /* Products */,
+				01FE53392869960300CE6931 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -133,6 +138,21 @@
 			path = Redux;
 			sourceTree = "<group>";
 		};
+		01FE53392869960300CE6931 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		01FE533D2869969E00CE6931 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				01FE53442869990700CE6931 /* BGUI */,
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -150,7 +170,8 @@
 			);
 			name = Blog;
 			packageProductDependencies = (
-				DA8538A0286823F000940584 /* ReSwift */,
+				01FE533B2869962B00CE6931 /* ReSwift */,
+				01FE53452869991800CE6931 /* BGUI */,
 			);
 			productName = Blog;
 			productReference = 011C5CDF285B2D73001D461E /* Blog.app */;
@@ -182,7 +203,7 @@
 			);
 			mainGroup = 011C5CD6285B2D73001D461E;
 			packageReferences = (
-				DA85389F286823F000940584 /* XCRemoteSwiftPackageReference "ReSwift" */,
+				01FE533A2869962B00CE6931 /* XCRemoteSwiftPackageReference "ReSwift" */,
 			);
 			productRefGroup = 011C5CE0285B2D73001D461E /* Products */;
 			projectDirPath = "";
@@ -365,6 +386,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -400,6 +422,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -438,7 +461,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		DA85389F286823F000940584 /* XCRemoteSwiftPackageReference "ReSwift" */ = {
+		01FE533A2869962B00CE6931 /* XCRemoteSwiftPackageReference "ReSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "git@github.com:ReSwift/ReSwift.git";
 			requirement = {
@@ -449,10 +472,14 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		DA8538A0286823F000940584 /* ReSwift */ = {
+		01FE533B2869962B00CE6931 /* ReSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = DA85389F286823F000940584 /* XCRemoteSwiftPackageReference "ReSwift" */;
+			package = 01FE533A2869962B00CE6931 /* XCRemoteSwiftPackageReference "ReSwift" */;
 			productName = ReSwift;
+		};
+		01FE53452869991800CE6931 /* BGUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = BGUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

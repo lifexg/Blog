@@ -8,11 +8,11 @@
 import Foundation
 import ReSwift
 
-extension MainPageState {
+extension BGBookMarksPageState {
   func classificationList() {
     Task {
       let list = await Classification.classifications()
-      mainPageStore.dispatch(MainPageRefreshAction(list: list))
+      BGBookMarksPageStore.dispatch(BGBookMarksPageRefreshAction(list: list))
     }
   }
 }
@@ -46,12 +46,6 @@ public class ObservableStore<State>: ObservableObject {
     
     public func dispatch(_ action: Action) {
         store.dispatch(action)
-    }
-    
-    public func dispatch(_ action: Action) -> () -> Void {
-        {
-            self.store.dispatch(action)
-        }
     }
 }
 

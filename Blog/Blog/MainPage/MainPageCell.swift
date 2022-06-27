@@ -1,5 +1,5 @@
 //
-//  MainPageCell.swift
+//  BGBookMarksPageCell.swift
 //  Blog
 //
 //  Created by fexg on 2022/6/17.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MainPageCell: View {
+struct BGBookMarksPageCell: View {
   let item: Classification
   var body: some View {
     VStack {
@@ -16,8 +16,8 @@ struct MainPageCell: View {
   }
 }
 
-struct MainPageCell_Previews: PreviewProvider {
+struct BGBookMarksPageCell_Previews: PreviewProvider {
   static var previews: some View {
-    MainPageCell(item: Classification(type: "1", name: "name", detail: []))
+    BGBookMarksPageCell(item: Classification(type: "1", name: "name", detail: []))
   }
 }

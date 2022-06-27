@@ -8,12 +8,19 @@
 import Foundation
 import ReSwift
 
-struct MainPageOnClickRefreshAction: Action {}
+struct BGBookMarksPageOnClickRefreshAction: Action {}
 
-struct MainPageRefreshAction: Action {
+struct BGBookMarksPageRefreshAction: Action {
   var list: [Classification]
 }
 
-struct MainPageAddFolderAction: Action {
-  
+struct BGBookMarksPageAddFolderAction: Action {
+}
+
+struct BGBookMarksPageAddFolderTextAlertAction: Action {
+  let name: String
+}
+
+struct BGBookMarksPageDeleteAction: Action {
+  let index: IndexSet
 }
