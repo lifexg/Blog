@@ -22,6 +22,7 @@ func BGBookMarksPageReducer(action: Action, state: BGBookMarksPageState?) -> BGB
   case let action as BGBookMarksPageDeleteAction:
     var list = state.list
     list.remove(atOffsets: action.index)
+    state.list = list
   default:
     break
   }

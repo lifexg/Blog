@@ -15,9 +15,8 @@ let BGBookMarksPageStore = Store<BGBookMarksPageState>(reducer: BGBookMarksPageR
 
 struct BGBookMarksPage: View {
   @ObservedObject var store: ObservableStore<BGBookMarksPageState>
-  @State var alertIsPresented: Bool = false
-  @State var text: String? = ""
   @State private var showDialog = false
+//  @State private var text: String? = ""
   var body: some View {
     NavigationView {
       List {
@@ -28,10 +27,14 @@ struct BGBookMarksPage: View {
             BGBookMarksPageCell(item: item)
           }
         }.onDelete(perform: deleteFolder)
-      }.alert(isPresented: $showDialog,
+      }
+//      .textFieldAlert(isPresented: $showDialog) { () -> TextFieldAlert in
+//        TextFieldAlert(title: "Alert Title", message: "Alert Message", text: self.$text)}
+      .alert(isPresented: $showDialog,
               BGTextAlert(title: "请输入名称",
                         message: "",
-                        keyboardType: .numberPad) {addFolder(name: $0)})
+                          keyboardType: .numberPad,
+                          action: addFolder(_:)))
       .navigationTitle(Text("书签"))
 //      .navigationBarTitleDisplayMode(.inline)
       .toolbar {
@@ -39,18 +42,26 @@ struct BGBookMarksPage: View {
           showDialog = true
         }
       }
-    }.navigationViewStyle(StackNavigationViewStyle())
-    .onAppear {
-      store.dispatch(BGBookMarksPageOnClickRefreshAction())
-    }.background(Color.red)
+    }
+//    .navigationViewStyle(StackNavigationViewStyle())
+    .onAppear(perform: loadData)
   }
 
+}
+
+// action
+extension BGBookMarksPage {
+  
+  func loadData() {
+    store.dispatch(BGBookMarksPageOnClickRefreshAction())
+  }
+  
   func deleteFolder(at indexSet: IndexSet) {
     self.store.dispatch(BGBookMarksPageDeleteAction.init(index: indexSet))
   }
-  
-  func addFolder(name: String?) {
-    if let name = name {
+
+  func addFolder(_ name: String?) {
+    if let name = name, !name.isEmpty {
       store.dispatch(BGBookMarksPageAddFolderTextAlertAction(name:name))
     }
   }

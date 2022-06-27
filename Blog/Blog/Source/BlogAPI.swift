@@ -7,29 +7,33 @@
 
 import Foundation
 
-struct ClassificationDetail: Codable {
+struct ClassificationDetail: Codable, Identifiable {
   var title: String
   var link: String
-}
-
-extension ClassificationDetail: Identifiable {
-  var id: UUID {
-    UUID()
+  var id = UUID()
+  
+  enum CodingKeys: String, CodingKey
+  {
+    case title
+    case link
   }
 }
 
-struct Classification: Codable {
+
+struct Classification: Codable, Identifiable {
+  var id = UUID()
   var type: String
   var name: String
   var detail: [ClassificationDetail]?
-}
-
-extension Classification: Identifiable {
   
-  var id: UUID {
-    UUID()
+  enum CodingKeys: String, CodingKey
+  {
+    case type
+    case name
+    case detail
   }
 }
+
 
 struct ClassData:Decodable {
   var data: [Classification]
@@ -48,7 +52,9 @@ extension Classification {
       }
       
       let model = try JSONDecoder().decode(ClassData.self, from: data)
+      
       return model.data
+      
     } catch {
       return []
     }
