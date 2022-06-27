@@ -10,7 +10,7 @@ import ReSwift
 import Combine
 import BGUI
 
-let BGBookMarksPageStore = Store<BGBookMarksPageState>(reducer: BGBookMarksPageReducer, state: BGBookMarksPageState())
+let bookMarksPageStore = Store<BGBookMarksPageState>(reducer: BGBookMarksPageReducer, state: BGBookMarksPageState())
 
 
 struct BGBookMarksPage: View {
@@ -32,9 +32,8 @@ struct BGBookMarksPage: View {
 //        TextFieldAlert(title: "Alert Title", message: "Alert Message", text: self.$text)}
       .alert(isPresented: $showDialog,
               BGTextAlert(title: "请输入名称",
-                        message: "",
-                          keyboardType: .numberPad,
-                          action: addFolder(_:)))
+                          textfields: [BGAlertTextField(placeholder: "请输入名称")],
+                          action: addFolder))
       .navigationTitle(Text("书签"))
 //      .navigationBarTitleDisplayMode(.inline)
       .toolbar {
@@ -60,8 +59,8 @@ extension BGBookMarksPage {
     self.store.dispatch(BGBookMarksPageDeleteAction.init(index: indexSet))
   }
 
-  func addFolder(_ name: String?) {
-    if let name = name, !name.isEmpty {
+  func addFolder(text: [String?]) {
+    if let name = text[0], !name.isEmpty {
       store.dispatch(BGBookMarksPageAddFolderTextAlertAction(name:name))
     }
   }
@@ -71,7 +70,7 @@ extension BGBookMarksPage {
 
 struct ContentView_Previews: PreviewProvider {
   static var previews: some View {
-    BGBookMarksPage(store: ObservableStore(store: BGBookMarksPageStore))
+    BGBookMarksPage(store: ObservableStore(store: bookMarksPageStore))
   }
 }
 

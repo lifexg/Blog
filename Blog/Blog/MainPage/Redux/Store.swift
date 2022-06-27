@@ -12,7 +12,7 @@ extension BGBookMarksPageState {
   func classificationList() {
     Task {
       let list = await Classification.classifications()
-      BGBookMarksPageStore.dispatch(BGBookMarksPageRefreshAction(list: list))
+      bookMarksPageStore.dispatch(BGBookMarksPageRefreshAction(list: list))
     }
   }
 }

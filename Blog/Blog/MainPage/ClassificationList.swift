@@ -6,9 +6,11 @@
 //
 
 import SwiftUI
+import BGUI
 
 struct ClassificationList: View {
   let item:Classification
+  @State var showDialog = false
   var body: some View {
     List {
       let list = item.detail ?? []
@@ -18,9 +20,35 @@ struct ClassificationList: View {
         } label: {
           ClassificationDetailCell(item: item)
         }
+      }.onDelete(perform: deleteFile)
+    }
+    .alert(isPresented: $showDialog,
+           BGTextAlert(title: "请输入名称/链接", textfields: [BGAlertTextField(placeholder: "请输入名称"), BGAlertTextField(placeholder: "请输入链接")], action:addFile))
+    .navigationTitle(Text("书签"))
+    .toolbar {
+      Image(systemName: "folder.badge.plus").onTapGesture {
+        showDialog = true
       }
     }
     .navigationTitle(Text(item.name)).navigationBarTitleDisplayMode(.inline)
+  }
+}
+
+// action
+extension ClassificationList {
+  
+  
+  func deleteFile(at indexSet: IndexSet) {
+    bookMarksPageStore.dispatch(BGBookMarksPageDeleteAction.init(index: indexSet))
+  }
+
+  func addFile(text: [String?]) {
+    let name = text[0]
+    let link = text[1]
+    if let name = name, !name.isEmpty,
+       let link = link, !link.isEmpty {
+      bookMarksPageStore.dispatch(BGBookMarksAddClassifcationLinkAction(name: name, link: link))
+    }
   }
 }
 

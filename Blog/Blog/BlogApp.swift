@@ -12,7 +12,7 @@ import SwiftUI
 struct BlogApp: App {
   var body: some Scene {
     WindowGroup {
-      BGBookMarksPage(store: ObservableStore(store: BGBookMarksPageStore))
+      BGBookMarksPage(store: ObservableStore(store: bookMarksPageStore))
     }
   }
 }

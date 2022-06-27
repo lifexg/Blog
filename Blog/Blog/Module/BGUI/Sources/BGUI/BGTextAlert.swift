@@ -11,39 +11,50 @@ import SwiftUI
 import Combine
 
 public struct BGTextAlert {
-  public init(title: String, message: String, placeholder: String = "", accept: String = "OK", cancel: String? = "Cancel", secondaryActionTitle: String? = nil, keyboardType: UIKeyboardType = .default, action: @escaping (String?) -> Void, secondaryAction: (() -> Void)? = nil) {
+  public init(title: String = "", message: String = "", textfields:[BGAlertTextField], accept: String = "OK", cancel: String? = "Cancel", secondaryActionTitle: String? = nil, action: @escaping ([String?]) -> Void, secondaryAction: (() -> Void)? = nil) {
     self.title = title
     self.message = message
-    self.placeholder = placeholder
     self.accept = accept
     self.cancel = cancel
     self.secondaryActionTitle = secondaryActionTitle
-    self.keyboardType = keyboardType
     self.action = action
     self.secondaryAction = secondaryAction
+    self.textfields = textfields
   }
   
   public var title: String // Title of the dialog
   public var message: String // Dialog message
-  public var placeholder: String = "" // Placeholder text for the TextField
+  public var textfields:[BGAlertTextField]
   public var accept: String = "OK" // The left-most button label
   public var cancel: String? = "Cancel" // The optional cancel (right-most) button label
   public var secondaryActionTitle: String? = nil // The optional center button label
-  public var keyboardType: UIKeyboardType = .default // Keyboard tzpe of the TextField
-  public var action: (String?) -> Void // Triggers when either of the two buttons closes the dialog
+  public var action: ([String?]) -> Void // Triggers when either of the two buttons closes the dialog
   public var secondaryAction: (() -> Void)? = nil // Triggers when the optional center button is tapped
+}
+
+public struct BGAlertTextField {
+  public init(placeholder: String = "", keyboardType: UIKeyboardType = .default) {
+    self.placeholder = placeholder
+    self.keyboardType = keyboardType
+  }
+  
+  public var placeholder: String = "" // Placeholder text for the TextField
+  public var keyboardType: UIKeyboardType = .default // Keyboard tzpe of the TextField
+  
 }
 
 extension UIAlertController {
   convenience init(alert: BGTextAlert) {
     self.init(title: alert.title, message: alert.message, preferredStyle: .alert)
-    addTextField {
-      $0.placeholder = alert.placeholder
-      $0.keyboardType = alert.keyboardType
+    alert.textfields.forEach { textfield in
+      addTextField {
+        $0.placeholder = textfield.placeholder
+        $0.keyboardType = textfield.keyboardType
+      }
     }
     if let cancel = alert.cancel {
       addAction(UIAlertAction(title: cancel, style: .cancel) { _ in
-        alert.action(nil)
+//        alert.action([])
       })
     }
     if let secondaryActionTitle = alert.secondaryActionTitle {
@@ -51,9 +62,13 @@ extension UIAlertController {
         alert.secondaryAction?()
       }))
     }
-    let textField = self.textFields?.first
     addAction(UIAlertAction(title: alert.accept, style: .default) { _ in
-      alert.action(textField?.text)
+      let textField = self.textFields
+      var texts:[String?] = []
+      textField?.forEach({ textfield in
+        texts.append(textfield.text)
+      })
+      alert.action(texts)
     })
   }
 }

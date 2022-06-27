@@ -24,3 +24,8 @@ struct BGBookMarksPageAddFolderTextAlertAction: Action {
 struct BGBookMarksPageDeleteAction: Action {
   let index: IndexSet
 }
+
+struct BGBookMarksAddClassifcationLinkAction: Action {
+  let name: String
+  let link: String
+}
