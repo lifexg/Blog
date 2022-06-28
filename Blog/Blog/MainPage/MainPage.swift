@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import ReSwiftExtention
 import ReSwift
 import Combine
 import BGUI
@@ -13,20 +14,9 @@ import CoreData
 
 let bookMarksPageStore = Store<BGBookMarksPageState>(reducer: BGBookMarksPageReducer, state: nil)
 
-extension ClassificationModel {
-  
-  @nonobjc public class func fetchRequest(delete: Bool) -> NSFetchRequest<ClassificationModel> {
-    let request = NSFetchRequest<ClassificationModel>(entityName: "ClassificationModel")
-//    request.predicate = NSPredicate(format: "name LIKE %@", "Robert")
-    request.sortDescriptors = [NSSortDescriptor(keyPath: \ClassificationDetailModel.sort, ascending: true)]
-    return request
-  }
-}
-
 struct BGBookMarksPage: View {
   @ObservedObject var store: ObservableStore<BGBookMarksPageState>
-  @Environment(\.managedObjectContext) private var viewContext
-  @FetchRequest(fetchRequest: ClassificationModel.fetchRequest(delete:true),
+  @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \ClassificationDetailModel.sort, ascending: true)],
       animation: .default)
   private var items: FetchedResults<ClassificationModel>
 
@@ -36,7 +26,7 @@ struct BGBookMarksPage: View {
       List {
           ForEach(items) { item in
             NavigationLink {
-              ClassificationList(item: item)
+              ClassificationList(item: item).environment(\.managedObjectContext, BGCoreDataManager.shared.classificationContainer.viewContext)
             } label: {
               BGBookMarksPageCell(item: item)
             }
@@ -60,18 +50,17 @@ struct BGBookMarksPage: View {
 
 // action
 extension BGBookMarksPage {
-  
   func loadData() {
     store.dispatch(BGBookMarksPageOnClickRefreshAction())
   }
   
   func deleteFolder(at indexSet: IndexSet) {
-    self.store.dispatch(BGBookMarksPageDeleteAction.init(index: indexSet))
+    self.store.dispatch(BGBookMarksPageDeleteAction(item: items[indexSet.first ?? 0]))
   }
 
   func addFolder(text: [String?]) {
     if let name = text[0], !name.isEmpty {
-      store.dispatch(BGBookMarksPageAddFolderTextAlertAction(name:name))
+      store.dispatch(BGBookMarksPageAddFolderTextAlertAction(name: name, index: (items.last?.sort ?? 0)+1))
     }
   }
 }

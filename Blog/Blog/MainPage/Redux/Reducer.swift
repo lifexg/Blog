@@ -10,24 +10,18 @@ import ReSwift
 import SwiftUI
 
 func BGBookMarksPageReducer(action: Action, state: BGBookMarksPageState?) -> BGBookMarksPageState {
-  var state = state ?? BGBookMarksPageState()
+  let state = state ?? BGBookMarksPageState()
   switch action {
   case _ as BGBookMarksPageOnClickRefreshAction:
     state.classificationList()
-  case let action as BGBookMarksPageRefreshAction:
-    state.list = action.list
   case let action as BGBookMarksPageAddFolderTextAlertAction:
-    var list = state.list
-    list.append(Classification(type: action.name, name: action.name))
-    state.list = list
+    state.addClassification(name: action.name, index: action.index)
   case let action as BGBookMarksPageDeleteAction:
-    var list = state.list
-    list.remove(atOffsets: action.index)
-    state.list = list
+    state.deleteClassification(item: action.item)
   case let action as BGBookMarksAddClassifcationLinkAction:
-    var list = state.list
-    state.list = list
-
+    state.addClassificationDetail(name: action.name, type: action.item.type ?? UUID(), link: action.link, index: action.index)
+  case let action as BGBookMarksPageDeleteDetailAction:
+    state.deleteClassificationDetail(item: action.item)
   default:
     break
   }

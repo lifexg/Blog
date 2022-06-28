@@ -15,16 +15,15 @@
 		0148DC76285C27B200AA92C3 /* BlogClassification.json in Resources */ = {isa = PBXBuildFile; fileRef = 0148DC75285C27B200AA92C3 /* BlogClassification.json */; };
 		015E3D78285C812B008F52C1 /* MainPageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015E3D76285C812B008F52C1 /* MainPageCell.swift */; };
 		015E3D7B285C81B9008F52C1 /* MainPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015E3D7A285C81B9008F52C1 /* MainPage.swift */; };
-		015E3D7D285C83FB008F52C1 /* BlogClassificationDetail.json in Resources */ = {isa = PBXBuildFile; fileRef = 015E3D7C285C83FB008F52C1 /* BlogClassificationDetail.json */; };
 		015E3D7F285C918D008F52C1 /* ClassificationList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015E3D7E285C918D008F52C1 /* ClassificationList.swift */; };
 		015E3D81285C96C5008F52C1 /* BlogContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015E3D80285C96C5008F52C1 /* BlogContentView.swift */; };
 		015E3D84285CA2CF008F52C1 /* bookmarks_2022_6_17.html in Resources */ = {isa = PBXBuildFile; fileRef = 015E3D83285CA2CF008F52C1 /* bookmarks_2022_6_17.html */; };
+		018C37FF286B2CEB001C45A9 /* BGUI in Frameworks */ = {isa = PBXBuildFile; productRef = 018C37FE286B2CEB001C45A9 /* BGUI */; };
+		018C3801286B2CEE001C45A9 /* ReSwiftExtention in Frameworks */ = {isa = PBXBuildFile; productRef = 018C3800286B2CEE001C45A9 /* ReSwiftExtention */; };
 		01FE532428659E8000CE6931 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FE532328659E8000CE6931 /* Action.swift */; };
 		01FE532628659E8600CE6931 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FE532528659E8600CE6931 /* Store.swift */; };
 		01FE532828659E9800CE6931 /* Reducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FE532728659E9800CE6931 /* Reducer.swift */; };
 		01FE532A2865A0CB00CE6931 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FE53292865A0CB00CE6931 /* State.swift */; };
-		01FE533C2869962B00CE6931 /* ReSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 01FE533B2869962B00CE6931 /* ReSwift */; };
-		01FE53462869991800CE6931 /* BGUI in Frameworks */ = {isa = PBXBuildFile; productRef = 01FE53452869991800CE6931 /* BGUI */; };
 		01FE5356286AA18E00CE6931 /* BGCoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FE5355286AA18E00CE6931 /* BGCoreDataManager.swift */; };
 		01FE5358286AA2BE00CE6931 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01FE5357286AA2BE00CE6931 /* CloudKit.framework */; };
 		01FE5385286AF68A00CE6931 /* ClassificationModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 01FE5383286AF68A00CE6931 /* ClassificationModel.xcdatamodeld */; };
@@ -40,7 +39,6 @@
 		0148DC75285C27B200AA92C3 /* BlogClassification.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = BlogClassification.json; sourceTree = "<group>"; };
 		015E3D76285C812B008F52C1 /* MainPageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPageCell.swift; sourceTree = "<group>"; };
 		015E3D7A285C81B9008F52C1 /* MainPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPage.swift; sourceTree = "<group>"; };
-		015E3D7C285C83FB008F52C1 /* BlogClassificationDetail.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = BlogClassificationDetail.json; sourceTree = "<group>"; };
 		015E3D7E285C918D008F52C1 /* ClassificationList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassificationList.swift; sourceTree = "<group>"; };
 		015E3D80285C96C5008F52C1 /* BlogContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogContentView.swift; sourceTree = "<group>"; };
 		015E3D82285CA147008F52C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -54,6 +52,7 @@
 		01FE5355286AA18E00CE6931 /* BGCoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BGCoreDataManager.swift; sourceTree = "<group>"; };
 		01FE5357286AA2BE00CE6931 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		01FE5384286AF68A00CE6931 /* Classification.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Classification.xcdatamodel; sourceTree = "<group>"; };
+		01FE5386286B2A4100CE6931 /* ReSwiftExtention */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = ReSwiftExtention; path = Blog/Module/ReSwiftExtention; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,9 +60,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				018C3801286B2CEE001C45A9 /* ReSwiftExtention in Frameworks */,
 				01FE5358286AA2BE00CE6931 /* CloudKit.framework in Frameworks */,
-				01FE533C2869962B00CE6931 /* ReSwift in Frameworks */,
-				01FE53462869991800CE6931 /* BGUI in Frameworks */,
+				018C37FF286B2CEB001C45A9 /* BGUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,7 +114,6 @@
 			isa = PBXGroup;
 			children = (
 				0148DC75285C27B200AA92C3 /* BlogClassification.json */,
-				015E3D7C285C83FB008F52C1 /* BlogClassificationDetail.json */,
 				0148DC6F285C26A700AA92C3 /* BlogAPI.swift */,
 				01FE5355286AA18E00CE6931 /* BGCoreDataManager.swift */,
 				01FE5383286AF68A00CE6931 /* ClassificationModel.xcdatamodeld */,
@@ -158,6 +156,7 @@
 		01FE533D2869969E00CE6931 /* Packages */ = {
 			isa = PBXGroup;
 			children = (
+				01FE5386286B2A4100CE6931 /* ReSwiftExtention */,
 				01FE53442869990700CE6931 /* BGUI */,
 			);
 			name = Packages;
@@ -180,8 +179,8 @@
 			);
 			name = Blog;
 			packageProductDependencies = (
-				01FE533B2869962B00CE6931 /* ReSwift */,
-				01FE53452869991800CE6931 /* BGUI */,
+				018C37FE286B2CEB001C45A9 /* BGUI */,
+				018C3800286B2CEE001C45A9 /* ReSwiftExtention */,
 			);
 			productName = Blog;
 			productReference = 011C5CDF285B2D73001D461E /* Blog.app */;
@@ -213,7 +212,6 @@
 			);
 			mainGroup = 011C5CD6285B2D73001D461E;
 			packageReferences = (
-				01FE533A2869962B00CE6931 /* XCRemoteSwiftPackageReference "ReSwift" */,
 			);
 			productRefGroup = 011C5CE0285B2D73001D461E /* Products */;
 			projectDirPath = "";
@@ -233,7 +231,6 @@
 				011C5CEA285B2D76001D461E /* Preview Assets.xcassets in Resources */,
 				011C5CE7285B2D76001D461E /* Assets.xcassets in Resources */,
 				015E3D84285CA2CF008F52C1 /* bookmarks_2022_6_17.html in Resources */,
-				015E3D7D285C83FB008F52C1 /* BlogClassificationDetail.json in Resources */,
 				0148DC76285C27B200AA92C3 /* BlogClassification.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -478,26 +475,14 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		01FE533A2869962B00CE6931 /* XCRemoteSwiftPackageReference "ReSwift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "git@github.com:ReSwift/ReSwift.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 6.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
 /* Begin XCSwiftPackageProductDependency section */
-		01FE533B2869962B00CE6931 /* ReSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 01FE533A2869962B00CE6931 /* XCRemoteSwiftPackageReference "ReSwift" */;
-			productName = ReSwift;
-		};
-		01FE53452869991800CE6931 /* BGUI */ = {
+		018C37FE286B2CEB001C45A9 /* BGUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = BGUI;
+		};
+		018C3800286B2CEE001C45A9 /* ReSwiftExtention */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ReSwiftExtention;
 		};
 /* End XCSwiftPackageProductDependency section */
 

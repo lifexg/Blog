@@ -7,6 +7,7 @@
 
 import Foundation
 import ReSwift
+import ReSwiftExtention
 
 extension BGBookMarksPageState {
   func classificationList() {
@@ -15,8 +16,6 @@ extension BGBookMarksPageState {
       DispatchQueue.main.async {
         do {
           let context = BGCoreDataManager.shared.classificationContainer.viewContext
-          let detailContext = BGCoreDataManager.shared.classificationDetailContainer.viewContext
-        
           let classification = try context.fetch(ClassificationModel.fetchRequest())
           if classification.isEmpty {
             list.enumerated().forEach { (offset, item) in
@@ -35,67 +34,75 @@ extension BGBookMarksPageState {
               }
             }
             try context.save()
-            try detailContext.save()
           } else {
-            print("nil")
+//            print("nil")
 //            let detailClassification = try context.fetch(ClassificationDetailModel.fetchRequest())
 //            classification.forEach { item in
 //              context.delete(item)
 //            }
 //            detailClassification.forEach { item in
-//              detailContext.delete(item)
-////              print(item.classification_type)
+//              context.delete(item)
 //            }
 //            try context.save()
-//            try detailContext.save()
           }
         } catch {
+          assertionFailure()
         }
       }
     }
   }
   
+  func addClassification(name: String, index: Int64) {
+    let context = BGCoreDataManager.shared.classificationContainer.viewContext
+    let type = UUID()
+    let newItem = ClassificationModel(context: context)
+    newItem.type = type
+    newItem.name = name
+    newItem.sort = index
+    do {
+      try context.save()
+    } catch {
+      assertionFailure()
+    }
+  }
+  
+  func deleteClassification(item: ClassificationModel) {
+    do {
+      let context = BGCoreDataManager.shared.classificationContainer.viewContext
+      let classification = try context.fetch(ClassificationDetailModel.fetchRequest(type: item.type ?? UUID()))
+      context.delete(item)
+      classification.forEach { item in
+        context.delete(item)
+      }
+      try context.save()
+    } catch {
+      assertionFailure()
+    }
+  }
+  
+  func addClassificationDetail(name: String, type:UUID, link: String, index: Int64) {
+    let detailContext = BGCoreDataManager.shared.classificationContainer.viewContext
+    let newItem = ClassificationDetailModel(context: detailContext)
+    newItem.type = UUID()
+    newItem.name = name
+    newItem.classification_type = type
+    newItem.link = link
+    newItem.sort = index
+    do {
+      try detailContext.save()
+    } catch {
+      assertionFailure()
+    }
+  }
+  
+  func deleteClassificationDetail(item: ClassificationDetailModel) {
+    let context = BGCoreDataManager.shared.classificationContainer.viewContext
+    context.delete(item)
+    do {
+      try context.save()
+    } catch {
+      assertionFailure()
+    }
+  }
 }
 
-// MARK: ObservableState
-
-public class ObservableStore<State>: ObservableObject {
-
-    // MARK: Public properties
-    
-    @Published public var state: State
-    
-    // MARK: Private properties
-    
-    private var store: Store<State>
-    
-    // MARK: Lifecycle
-    
-    public init(store: Store<State>) {
-        self.store = store
-        self.state = store.state
-        
-        store.subscribe(self)
-    }
-    
-    deinit {
-        store.unsubscribe(self)
-    }
-    
-    // MARK: Public methods
-    
-    public func dispatch(_ action: Action) {
-        store.dispatch(action)
-    }
-}
-
-extension ObservableStore: StoreSubscriber {
-    
-    // MARK: - <StoreSubscriber>
-    
-    public func newState(state: State) {
-        DispatchQueue.main.async {
-            self.state = state
-        }
-    }
-}

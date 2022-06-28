@@ -9,21 +9,9 @@ import SwiftUI
 import BGUI
 import CoreData
 
-extension ClassificationDetailModel {
-  
-  @nonobjc public class func fetchRequest(type: UUID) -> NSFetchRequest<ClassificationDetailModel> {
-    let request = NSFetchRequest<ClassificationDetailModel>(entityName: "ClassificationDetailModel")
-    request.predicate = NSPredicate(format: "classification_type == %@", type as CVarArg)
-    request.sortDescriptors = [NSSortDescriptor(keyPath: \ClassificationDetailModel.sort, ascending: true)]
-    return request
-  }
-}
-
-
 struct ClassificationList: View {
    var item:ClassificationModel
-  @FetchRequest(
-    fetchRequest: ClassificationDetailModel.fetchRequest(type:UUID()),
+  @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \ClassificationDetailModel.sort, ascending: true)],
       animation: .default)
   private var items: FetchedResults<ClassificationDetailModel>
   
@@ -48,7 +36,7 @@ struct ClassificationList: View {
     }
     .alert(isPresented: $showDialog,
            BGTextAlert(title: "请输入名称/链接", textfields: [BGAlertTextField(placeholder: "请输入名称"), BGAlertTextField(placeholder: "请输入链接")], action:addFile))
-    .navigationTitle(Text("书签"))
+    .navigationTitle(Text(item.name ?? ""))
     .toolbar {
       Image(systemName: "folder.badge.plus").onTapGesture {
         showDialog = true
@@ -63,7 +51,7 @@ extension ClassificationList {
   
   
   func deleteFile(at indexSet: IndexSet) {
-    bookMarksPageStore.dispatch(BGBookMarksPageDeleteAction.init(index: indexSet))
+    bookMarksPageStore.dispatch(BGBookMarksPageDeleteDetailAction(item: items[indexSet.first ?? 0]))
   }
 
   func addFile(text: [String?]) {
@@ -71,7 +59,8 @@ extension ClassificationList {
     let link = text[1]
     if let name = name, !name.isEmpty,
        let link = link, !link.isEmpty {
-      bookMarksPageStore.dispatch(BGBookMarksAddClassifcationLinkAction(name: name, link: link))
+      let item = items.last
+      bookMarksPageStore.dispatch(BGBookMarksAddClassifcationLinkAction(name: name, link: link, index: (item?.sort ?? 0)+1, item: self.item))
     }
   }
 }

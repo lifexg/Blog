@@ -10,22 +10,26 @@ import ReSwift
 
 struct BGBookMarksPageOnClickRefreshAction: Action {}
 
-struct BGBookMarksPageRefreshAction: Action {
-  var list: [Classification]
-}
-
 struct BGBookMarksPageAddFolderAction: Action {
 }
 
 struct BGBookMarksPageAddFolderTextAlertAction: Action {
   let name: String
+  let index: Int64
 }
 
 struct BGBookMarksPageDeleteAction: Action {
-  let index: IndexSet
+  let item: ClassificationModel
 }
 
 struct BGBookMarksAddClassifcationLinkAction: Action {
   let name: String
   let link: String
+  let index: Int64
+  let item: ClassificationModel
 }
+
+struct BGBookMarksPageDeleteDetailAction: Action {
+  let item: ClassificationDetailModel
+}
+
