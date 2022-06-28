@@ -8,16 +8,17 @@
 import SwiftUI
 
 struct BGBookMarksPageCell: View {
-  let item: Classification
+  let item: ClassificationModel
+
   var body: some View {
     VStack {
-      Text(item.name)
+      Text(item.name ?? "")
     }
   }
 }
 
 struct BGBookMarksPageCell_Previews: PreviewProvider {
   static var previews: some View {
-    BGBookMarksPageCell(item: Classification(type: "1", name: "name", detail: []))
+    BGBookMarksPageCell(item:ClassificationModel())
   }
 }

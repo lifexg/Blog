@@ -12,9 +12,49 @@ extension BGBookMarksPageState {
   func classificationList() {
     Task {
       let list = await Classification.classifications()
-      bookMarksPageStore.dispatch(BGBookMarksPageRefreshAction(list: list))
+      DispatchQueue.main.async {
+        do {
+          let context = BGCoreDataManager.shared.classificationContainer.viewContext
+          let detailContext = BGCoreDataManager.shared.classificationDetailContainer.viewContext
+        
+          let classification = try context.fetch(ClassificationModel.fetchRequest())
+          if classification.isEmpty {
+            list.enumerated().forEach { (offset, item) in
+              let type = UUID()
+              let newItem = ClassificationModel(context: context)
+              newItem.type = type
+              newItem.name = item.name
+              newItem.sort = Int64(offset)
+              item.detail?.enumerated().forEach { (offset, detail) in
+                let newItem = ClassificationDetailModel(context: context)
+                newItem.type = UUID()
+                newItem.name = detail.title
+                newItem.classification_type = type
+                newItem.link = detail.link
+                newItem.sort = Int64(offset)
+              }
+            }
+            try context.save()
+            try detailContext.save()
+          } else {
+            print("nil")
+//            let detailClassification = try context.fetch(ClassificationDetailModel.fetchRequest())
+//            classification.forEach { item in
+//              context.delete(item)
+//            }
+//            detailClassification.forEach { item in
+//              detailContext.delete(item)
+////              print(item.classification_type)
+//            }
+//            try context.save()
+//            try detailContext.save()
+          }
+        } catch {
+        }
+      }
     }
   }
+  
 }
 
 // MARK: ObservableState

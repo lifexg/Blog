@@ -7,16 +7,40 @@
 
 import SwiftUI
 import BGUI
+import CoreData
+
+extension ClassificationDetailModel {
+  
+  @nonobjc public class func fetchRequest(type: UUID) -> NSFetchRequest<ClassificationDetailModel> {
+    let request = NSFetchRequest<ClassificationDetailModel>(entityName: "ClassificationDetailModel")
+    request.predicate = NSPredicate(format: "classification_type == %@", type as CVarArg)
+    request.sortDescriptors = [NSSortDescriptor(keyPath: \ClassificationDetailModel.sort, ascending: true)]
+    return request
+  }
+}
+
 
 struct ClassificationList: View {
-  let item:Classification
+   var item:ClassificationModel
+  @FetchRequest(
+    fetchRequest: ClassificationDetailModel.fetchRequest(type:UUID()),
+      animation: .default)
+  private var items: FetchedResults<ClassificationDetailModel>
+  
+//  var wordsRequest : FetchRequest<ClassificationDetailModel>
+//  private var items : FetchedResults<ClassificationDetailModel>{wordsRequest.wrappedValue}
+
+  init(item: ClassificationModel){
+    self.item = item
+    _items = FetchRequest(entity: ClassificationDetailModel.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \ClassificationDetailModel.sort, ascending: true)], predicate:NSPredicate(format: "classification_type = %@", item.type! as CVarArg))
+  }
+  
   @State var showDialog = false
   var body: some View {
     List {
-      let list = item.detail ?? []
-      ForEach(list) { item in
+      ForEach(items) { item in
         NavigationLink {
-          BlogContentView(webViewModel: WebViewModel(url: item.link))
+          BlogContentView(webViewModel: WebViewModel(url: item.link ?? ""))
         } label: {
           ClassificationDetailCell(item: item)
         }
@@ -30,7 +54,7 @@ struct ClassificationList: View {
         showDialog = true
       }
     }
-    .navigationTitle(Text(item.name)).navigationBarTitleDisplayMode(.inline)
+    .navigationTitle(Text(item.name ?? "")).navigationBarTitleDisplayMode(.inline)
   }
 }
 
@@ -53,10 +77,10 @@ extension ClassificationList {
 }
 
 struct ClassificationDetailCell: View {
-  let item: ClassificationDetail
+  let item: ClassificationDetailModel
   var body: some View {
     VStack {
-      Text(item.title)
+      Text(item.name ?? "")
     }
   }
 }
@@ -64,6 +88,6 @@ struct ClassificationDetailCell: View {
 
 struct ClassificationList_Previews: PreviewProvider {
   static var previews: some View {
-    ClassificationList(item: Classification(type: "", name: "ceshi", detail: [ClassificationDetail(title: "hahah", link: "https://www.baidu.com")]))
+    ClassificationList(item: ClassificationModel())
   }
 }

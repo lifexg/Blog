@@ -7,12 +7,11 @@
 
 import SwiftUI
 
-
 @main
 struct BlogApp: App {
   var body: some Scene {
     WindowGroup {
-      BGBookMarksPage(store: ObservableStore(store: bookMarksPageStore))
+      BGBookMarksPage(store: ObservableStore(store: bookMarksPageStore)).environment(\.managedObjectContext, BGCoreDataManager.shared.classificationContainer.viewContext)
     }
   }
 }

@@ -7,6 +7,7 @@
 
 import Foundation
 import ReSwift
+import SwiftUI
 
 func BGBookMarksPageReducer(action: Action, state: BGBookMarksPageState?) -> BGBookMarksPageState {
   var state = state ?? BGBookMarksPageState()

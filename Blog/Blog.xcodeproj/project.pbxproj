@@ -25,6 +25,9 @@
 		01FE532A2865A0CB00CE6931 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FE53292865A0CB00CE6931 /* State.swift */; };
 		01FE533C2869962B00CE6931 /* ReSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 01FE533B2869962B00CE6931 /* ReSwift */; };
 		01FE53462869991800CE6931 /* BGUI in Frameworks */ = {isa = PBXBuildFile; productRef = 01FE53452869991800CE6931 /* BGUI */; };
+		01FE5356286AA18E00CE6931 /* BGCoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FE5355286AA18E00CE6931 /* BGCoreDataManager.swift */; };
+		01FE5358286AA2BE00CE6931 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01FE5357286AA2BE00CE6931 /* CloudKit.framework */; };
+		01FE5385286AF68A00CE6931 /* ClassificationModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 01FE5383286AF68A00CE6931 /* ClassificationModel.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +51,9 @@
 		01FE53292865A0CB00CE6931 /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
 		01FE532B2865DA2100CE6931 /* Blog.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Blog.entitlements; sourceTree = "<group>"; };
 		01FE53442869990700CE6931 /* BGUI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = BGUI; path = Blog/Module/BGUI; sourceTree = "<group>"; };
+		01FE5355286AA18E00CE6931 /* BGCoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BGCoreDataManager.swift; sourceTree = "<group>"; };
+		01FE5357286AA2BE00CE6931 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		01FE5384286AF68A00CE6931 /* Classification.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Classification.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01FE5358286AA2BE00CE6931 /* CloudKit.framework in Frameworks */,
 				01FE533C2869962B00CE6931 /* ReSwift in Frameworks */,
 				01FE53462869991800CE6931 /* BGUI in Frameworks */,
 			);
@@ -110,6 +117,8 @@
 				0148DC75285C27B200AA92C3 /* BlogClassification.json */,
 				015E3D7C285C83FB008F52C1 /* BlogClassificationDetail.json */,
 				0148DC6F285C26A700AA92C3 /* BlogAPI.swift */,
+				01FE5355286AA18E00CE6931 /* BGCoreDataManager.swift */,
+				01FE5383286AF68A00CE6931 /* ClassificationModel.xcdatamodeld */,
 				015E3D83285CA2CF008F52C1 /* bookmarks_2022_6_17.html */,
 			);
 			path = Source;
@@ -141,6 +150,7 @@
 		01FE53392869960300CE6931 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				01FE5357286AA2BE00CE6931 /* CloudKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -240,6 +250,8 @@
 				015E3D81285C96C5008F52C1 /* BlogContentView.swift in Sources */,
 				01FE532A2865A0CB00CE6931 /* State.swift in Sources */,
 				01FE532628659E8600CE6931 /* Store.swift in Sources */,
+				01FE5356286AA18E00CE6931 /* BGCoreDataManager.swift in Sources */,
+				01FE5385286AF68A00CE6931 /* ClassificationModel.xcdatamodeld in Sources */,
 				0148DC70285C26A700AA92C3 /* BlogAPI.swift in Sources */,
 				01FE532828659E9800CE6931 /* Reducer.swift in Sources */,
 				01FE532428659E8000CE6931 /* Action.swift in Sources */,
@@ -375,15 +387,17 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Blog/Preview Content\"";
 				DEVELOPMENT_TEAM = 5P2LF2A45E;
+				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = NO;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Blog/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "书签";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.books";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -412,15 +426,17 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Blog/Preview Content\"";
 				DEVELOPMENT_TEAM = 5P2LF2A45E;
+				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = NO;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Blog/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "书签";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.books";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -484,6 +500,19 @@
 			productName = BGUI;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		01FE5383286AF68A00CE6931 /* ClassificationModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				01FE5384286AF68A00CE6931 /* Classification.xcdatamodel */,
+			);
+			currentVersion = 01FE5384286AF68A00CE6931 /* Classification.xcdatamodel */;
+			path = ClassificationModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 011C5CD7285B2D73001D461E /* Project object */;
 }
