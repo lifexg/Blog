@@ -15,12 +15,9 @@ struct ClassificationList: View {
       animation: .default)
   private var items: FetchedResults<ClassificationDetailModel>
   
-//  var wordsRequest : FetchRequest<ClassificationDetailModel>
-//  private var items : FetchedResults<ClassificationDetailModel>{wordsRequest.wrappedValue}
-
   init(item: ClassificationModel){
     self.item = item
-    _items = FetchRequest(entity: ClassificationDetailModel.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \ClassificationDetailModel.sort, ascending: true)], predicate:NSPredicate(format: "classification_type = %@", item.type! as CVarArg))
+    _items = FetchRequest(entity: ClassificationDetailModel.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \ClassificationDetailModel.sort, ascending: true)], predicate:NSPredicate(format: "classification_type = %@", (item.type ?? UUID()) as CVarArg))
   }
   
   @State var showDialog = false

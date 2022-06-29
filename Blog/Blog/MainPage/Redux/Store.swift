@@ -8,9 +8,18 @@
 import Foundation
 import ReSwift
 import ReSwiftExtention
+import CoreData
 
 extension BGBookMarksPageState {
   func classificationList() {
+    let key = "iCloudInitedKey"
+    if !NSUbiquitousKeyValueStore.default.bool(forKey: key) {
+      NSUbiquitousKeyValueStore.default.set(true, forKey: key)
+      NSUbiquitousKeyValueStore.default.synchronize()
+    } else {
+      return
+    }
+
     Task {
       let list = await Classification.classifications()
       DispatchQueue.main.async {
