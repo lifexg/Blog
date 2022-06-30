@@ -49,11 +49,11 @@ struct BGBookMarksPage: View {
       }
       .alert(isPresented: $showDialog,
               BGTextAlert(title: "请输入名称",
-                          textfields: [BGAlertTextField(placeholder: "请输入名称")],
+                          textfields: [BGAlertTextField(placeholder: "请输入名称",content: nil)],
                           action: addFolder))
       .alert(isPresented: $showEditDialog,
               BGTextAlert(title: "请输入名称",
-                          textfields: [BGAlertTextField(placeholder: tempItem?.name ?? "")],
+                          textfields: [BGAlertTextField(placeholder: "请输入名称",content: tempItem?.name)],
                           action: editFolder))
       .navigationTitle(Text("书签"))
       .toolbar {

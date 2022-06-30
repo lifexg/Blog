@@ -38,3 +38,8 @@ struct BGBookMarksPageEditFolderNameAction: Action {
   let name: String
 }
 
+struct BGBookMarksPageEditDetailAction: Action {
+  let item: ClassificationDetailModel
+}
+
+

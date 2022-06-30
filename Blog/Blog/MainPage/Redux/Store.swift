@@ -123,5 +123,15 @@ extension BGBookMarksPageState {
       assertionFailure()
     }
   }
+  
+  func editClassificationDetail(item: ClassificationDetailModel) {
+    let context = BGCoreDataManager.shared.classificationContainer.viewContext
+    do {
+      try context.save()
+    } catch {
+      assertionFailure()
+    }
+  }
+
 }
 

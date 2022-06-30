@@ -33,13 +33,15 @@ public struct BGTextAlert {
 }
 
 public struct BGAlertTextField {
-  public init(placeholder: String = "", keyboardType: UIKeyboardType = .default) {
+  public init(placeholder: String = "", content: String?, keyboardType: UIKeyboardType = .default) {
     self.placeholder = placeholder
     self.keyboardType = keyboardType
+    self.content = content
   }
   
   public var placeholder: String = "" // Placeholder text for the TextField
   public var keyboardType: UIKeyboardType = .default // Keyboard tzpe of the TextField
+  public var content: String?
   
 }
 
@@ -50,6 +52,7 @@ extension UIAlertController {
       addTextField {
         $0.placeholder = textfield.placeholder
         $0.keyboardType = textfield.keyboardType
+        $0.text = textfield.content
       }
     }
     if let cancel = alert.cancel {
