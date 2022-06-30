@@ -11,7 +11,7 @@ import ReSwift
 import Combine
 import BGUI
 import CoreData
-
+import CoreServices
 let bookMarksPageStore = Store<BGBookMarksPageState>(reducer: BGBookMarksPageReducer, state: nil)
 
 struct BGBookMarksPage: View {
@@ -21,6 +21,9 @@ struct BGBookMarksPage: View {
   private var items: FetchedResults<ClassificationModel>
 
   @State private var showDialog = false
+  
+  @State private var showEditDialog = false
+  @State private var tempItem: ClassificationModel?
   var body: some View {
     NavigationView {
       List {
@@ -28,7 +31,19 @@ struct BGBookMarksPage: View {
             NavigationLink {
               ClassificationList(item: item).environment(\.managedObjectContext, BGCoreDataManager.shared.classificationContainer.viewContext)
             } label: {
-              BGBookMarksPageCell(item: item)
+              if #available(iOS 15.0, *) {
+                BGBookMarksPageCell(item: item).swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                  Button(action: {
+                    deleteFolder(at: item)
+                  },label: {Label("Delete", systemImage: "trash")})
+                  Button(action: {
+                    tempItem = item
+                    showEditDialog = true
+                  },label: {Label("Edit", systemImage: "square.and.pencil")})
+                }.tint(.red)
+              } else {
+                BGBookMarksPageCell(item: item)
+              }
             }
           }.onDelete(perform: deleteFolder)
       }
@@ -36,6 +51,10 @@ struct BGBookMarksPage: View {
               BGTextAlert(title: "请输入名称",
                           textfields: [BGAlertTextField(placeholder: "请输入名称")],
                           action: addFolder))
+      .alert(isPresented: $showEditDialog,
+              BGTextAlert(title: "请输入名称",
+                          textfields: [BGAlertTextField(placeholder: tempItem?.name ?? "")],
+                          action: editFolder))
       .navigationTitle(Text("书签"))
       .toolbar {
         Image(systemName: "folder.badge.plus").onTapGesture {
@@ -57,10 +76,22 @@ extension BGBookMarksPage {
   func deleteFolder(at indexSet: IndexSet) {
     self.store.dispatch(BGBookMarksPageDeleteAction(item: items[indexSet.first ?? 0]))
   }
+  
+  func deleteFolder(at item: ClassificationModel) {
+    self.store.dispatch(BGBookMarksPageDeleteAction(item: item))
+  }
+
 
   func addFolder(text: [String?]) {
     if let name = text[0], !name.isEmpty {
       store.dispatch(BGBookMarksPageAddFolderTextAlertAction(name: name, index: (items.last?.sort ?? 0)+1))
+    }
+  }
+  
+  func editFolder(text: [String?]) {
+    if let name = text[0], !name.isEmpty,
+    let tempItem = tempItem {
+      store.dispatch(BGBookMarksPageEditFolderNameAction(item: tempItem, name: name))
     }
   }
 }

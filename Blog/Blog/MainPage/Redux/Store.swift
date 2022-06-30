@@ -113,5 +113,15 @@ extension BGBookMarksPageState {
       assertionFailure()
     }
   }
+  
+  func editClassificationFolderName(item: ClassificationModel, name: String) {
+    let context = BGCoreDataManager.shared.classificationContainer.viewContext
+    item.name = name
+    do {
+      try context.save()
+    } catch {
+      assertionFailure()
+    }
+  }
 }
 
