@@ -39,3 +39,9 @@ state发生的任何变化，一定是有action引起的，保证了Redux应用�
 特点：容易测试
 
 通过Redux的三个特性，对应了上边提到的解决了mvc架构的痛点
+
+Blog应用主要采用了Redux + SwiftUI + iCloudKit 技术，可在APP Store搜书签
+#### 功能点
+- 书签列表
+- iCloud存储同步数据
+- Widget
