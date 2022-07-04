@@ -24,42 +24,55 @@ struct BGBookMarksPage: View {
   
   @State private var showEditDialog = false
   @State private var tempItem: ClassificationModel?
+  
+  @State private var urlStr: String = ""
+  @State private var isCommit: Bool = false
   var body: some View {
     NavigationView {
-      List {
-          ForEach(items) { item in
-            NavigationLink {
-              ClassificationList(item: item).environment(\.managedObjectContext, BGCoreDataManager.shared.classificationContainer.viewContext)
-            } label: {
-              if #available(iOS 15.0, *) {
-                BGBookMarksPageCell(item: item).swipeActions(edge: .trailing, allowsFullSwipe: true) {
-                  Button(action: {
-                    deleteFolder(at: item)
-                  },label: {Label("Delete", systemImage: "trash")})
-                  Button(action: {
-                    tempItem = item
-                    showEditDialog = true
-                  },label: {Label("Edit", systemImage: "square.and.pencil")})
-                }.tint(.red)
-              } else {
-                BGBookMarksPageCell(item: item)
+      HStack {
+        List {
+            ForEach(items) { item in
+              NavigationLink {
+                ClassificationList(item: item).environment(\.managedObjectContext, BGCoreDataManager.shared.classificationContainer.viewContext)
+              } label: {
+                if #available(iOS 15.0, *) {
+                  BGBookMarksPageCell(item: item).swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                    Button(action: {
+                      deleteFolder(at: item)
+                    },label: {Label("Delete", systemImage: "trash")})
+                    Button(action: {
+                      tempItem = item
+                      showEditDialog = true
+                    },label: {Label("Edit", systemImage: "square.and.pencil")})
+                  }.tint(.red)
+                } else {
+                  BGBookMarksPageCell(item: item)
+                }
               }
-            }
-          }.onDelete(perform: deleteFolder)
-      }
-      .alert(isPresented: $showDialog,
-              BGTextAlert(title: "请输入名称",
-                          textfields: [BGAlertTextField(placeholder: "请输入名称",content: nil)],
-                          action: addFolder))
-      .alert(isPresented: $showEditDialog,
-              BGTextAlert(title: "请输入名称",
-                          textfields: [BGAlertTextField(placeholder: "请输入名称",content: tempItem?.name)],
-                          action: editFolder))
-      .navigationTitle(Text("书签"))
-      .toolbar {
-        Image(systemName: "folder.badge.plus").onTapGesture {
-          showDialog = true
+            }.onDelete(perform: deleteFolder)
+        }.onOpenURL(perform: { url in
+          
+          urlStr = url.absoluteString
+          isCommit = true
+        })
+        .alert(isPresented: $showDialog,
+                BGTextAlert(title: "请输入名称",
+                            textfields: [BGAlertTextField(placeholder: "请输入名称",content: nil)],
+                            action: addFolder))
+        .alert(isPresented: $showEditDialog,
+                BGTextAlert(title: "请输入名称",
+                            textfields: [BGAlertTextField(placeholder: "请输入名称",content: tempItem?.name)],
+                            action: editFolder))
+        .navigationTitle(Text("书签"))
+        .toolbar {
+          Image(systemName: "folder.badge.plus").onTapGesture {
+            showDialog = true
+          }
         }
+        
+        NavigationLink(destination:BlogContentView(webViewModel: WebViewModel(url: urlStr)), isActive: $isCommit) {
+        }
+
       }
     }
     .onAppear(perform: loadData)

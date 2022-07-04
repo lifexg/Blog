@@ -17,7 +17,6 @@
 		015E3D7B285C81B9008F52C1 /* MainPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015E3D7A285C81B9008F52C1 /* MainPage.swift */; };
 		015E3D7F285C918D008F52C1 /* ClassificationList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015E3D7E285C918D008F52C1 /* ClassificationList.swift */; };
 		015E3D81285C96C5008F52C1 /* BlogContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015E3D80285C96C5008F52C1 /* BlogContentView.swift */; };
-		015E3D84285CA2CF008F52C1 /* bookmarks_2022_6_17.html in Resources */ = {isa = PBXBuildFile; fileRef = 015E3D83285CA2CF008F52C1 /* bookmarks_2022_6_17.html */; };
 		018C37FF286B2CEB001C45A9 /* BGUI in Frameworks */ = {isa = PBXBuildFile; productRef = 018C37FE286B2CEB001C45A9 /* BGUI */; };
 		018C3801286B2CEE001C45A9 /* ReSwiftExtention in Frameworks */ = {isa = PBXBuildFile; productRef = 018C3800286B2CEE001C45A9 /* ReSwiftExtention */; };
 		018C381B286EDC3D001C45A9 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018C381A286EDC3D001C45A9 /* WidgetKit.framework */; };
@@ -74,7 +73,6 @@
 		015E3D7E285C918D008F52C1 /* ClassificationList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassificationList.swift; sourceTree = "<group>"; };
 		015E3D80285C96C5008F52C1 /* BlogContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogContentView.swift; sourceTree = "<group>"; };
 		015E3D82285CA147008F52C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		015E3D83285CA2CF008F52C1 /* bookmarks_2022_6_17.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = bookmarks_2022_6_17.html; sourceTree = "<group>"; };
 		018C3819286EDC3D001C45A9 /* WidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		018C381A286EDC3D001C45A9 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		018C381C286EDC3E001C45A9 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -170,7 +168,6 @@
 				0148DC6F285C26A700AA92C3 /* BlogAPI.swift */,
 				01FE5355286AA18E00CE6931 /* BGCoreDataManager.swift */,
 				01FE5383286AF68A00CE6931 /* ClassificationModel.xcdatamodeld */,
-				015E3D83285CA2CF008F52C1 /* bookmarks_2022_6_17.html */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -320,7 +317,6 @@
 				011C5CF1285B34BF001D461E /* Launch Screen.storyboard in Resources */,
 				011C5CEA285B2D76001D461E /* Preview Assets.xcassets in Resources */,
 				011C5CE7285B2D76001D461E /* Assets.xcassets in Resources */,
-				015E3D84285CA2CF008F52C1 /* bookmarks_2022_6_17.html in Resources */,
 				0148DC76285C27B200AA92C3 /* BlogClassification.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

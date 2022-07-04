@@ -102,19 +102,28 @@ struct NowPosterWidgetEntryView : View {
   var entry: PosterProvider.Entry
   var body: some View {
     ZStack{
-      Image(uiImage: entry.poster.posterImage!)
-        .resizable()
-        .frame(minWidth: 169, maxWidth: .infinity, minHeight: 169, maxHeight: .infinity, alignment: .center)
-        .scaledToFill()
-        .edgesIgnoringSafeArea(.all)
-        .aspectRatio(contentMode: .fill)
+      if let image = entry.poster.posterImage {
+        Link(destination: URL(string: "https://www.jianshu.com/u/bc4a806f89c5")!) {
+                VStack {
+                  Image(uiImage: image)
+                    .resizable()
+                    .frame(minWidth: 169, maxWidth: .infinity, minHeight: 169, maxHeight: .infinity, alignment: .center)
+                    .scaledToFill()
+                    .edgesIgnoringSafeArea(.all)
+                    .aspectRatio(contentMode: .fill)
+                    .widgetURL(URL(string: "https://www.jianshu.com/u/bc4a806f89c5"))
+                }
+            }
+      }
+      
       Text(entry.poster.content)
         .foregroundColor(Color.white)
         .lineLimit(4)
         .font(.system(size: 14))
         .padding(.horizontal)
+//        .widgetURL(URL(string: "跳转链接Text"))
     }
-    .widgetURL(URL(string: "跳转链接"))
+//    .widgetURL(URL(string: "https://www.jianshu.com/u/bc4a806f89c5"))
   }
 }
 
@@ -127,7 +136,7 @@ struct NowWidget1: Widget {
     }
     .configurationDisplayName("看一看")
     .description("This is an 看一看 widget.")
-    //        .supportedFamilies([.systemSmall,.systemMedium])
+//            .supportedFamilies([.systemSmall,.systemMedium])
   }
 }
 

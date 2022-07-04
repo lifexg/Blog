@@ -64,8 +64,8 @@ struct NowSwiftWidget: WidgetBundle {
     @WidgetBundleBuilder
     var body: some Widget {
       NowWidget1()
-      NowWidget2()
-      NowWidget3()
+//      NowWidget2()
+//      NowWidget3()
     }
 }
 
