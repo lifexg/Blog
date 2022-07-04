@@ -16,7 +16,7 @@
 # Redux
 下面聊聊redux怎么解决这个问题。
 ![](https://upload-images.jianshu.io/upload_images/11238923-6874c1875e787026.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-###### 构成
+#### 构成
 - Store 包含三部分
 Dispatch: 分发Action的方法
 Reducer：去处理Action，更新store
@@ -28,7 +28,7 @@ Action通过reducer触发store的更新。
 - State: state只读的，唯一改变state的方式就是触发action
 
 点击view触发一个action，通过dispatcher dispatch到reducer中处理，生成一个新的state，触发store的更新，通知到view的更新
-###### 三个特性
+#### 三个特性
 1. 单数据流模式
 所有状态存放在唯一的Store中，View 内部也是尽量没有自己的状态，当Store中状态变化，则View会进行更新，当View有用户的操作，则Store就进行更新。 所有状态清晰明了，当发现问题时候只需要检查状态就可以了。
 2. 可以预测性，（通过reducer的含义）
