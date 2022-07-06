@@ -33,7 +33,7 @@ struct BGBookMarksPage: View {
         List {
             ForEach(items) { item in
               NavigationLink {
-                ClassificationList(item: item).environment(\.managedObjectContext, BGCoreDataManager.shared.classificationContainer.viewContext)
+                BGClassificationList(item: item).environment(\.managedObjectContext, BGCoreDataManager.shared.classificationContainer.viewContext)
               } label: {
                 if #available(iOS 15.0, *) {
                   BGBookMarksPageCell(item: item).swipeActions(edge: .trailing, allowsFullSwipe: true) {
@@ -70,7 +70,7 @@ struct BGBookMarksPage: View {
           }
         }
         
-        NavigationLink(destination:BlogContentView(webViewModel: WebViewModel(url: urlStr)), isActive: $isCommit) {
+        NavigationLink(destination:BGContentView(webViewModel: WebViewModel(url: urlStr)), isActive: $isCommit) {
         }
 
       }

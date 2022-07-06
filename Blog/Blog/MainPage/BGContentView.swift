@@ -1,5 +1,5 @@
 //
-//  BlogContentView.swift
+//  BGContentView.swift
 //  Blog
 //
 //  Created by fexg on 2022/6/17.
@@ -8,7 +8,7 @@
 import SwiftUI
 import WebKit
 
-struct BlogContentView: View {
+struct BGContentView: View {
   //  @Binding var link: String
   @ObservedObject var webViewModel:WebViewModel
   
@@ -36,9 +36,9 @@ struct BlogContentView: View {
   }
 }
 
-struct BlogContentView_Previews: PreviewProvider {
+struct BGContentView_Previews: PreviewProvider {
   static var previews: some View {
-    BlogContentView(webViewModel: WebViewModel(url: "https://www.baidu.com"))
+    BGContentView(webViewModel: WebViewModel(url: "https://www.baidu.com"))
   }
 }
 

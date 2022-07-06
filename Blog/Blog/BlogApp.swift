@@ -17,7 +17,7 @@ struct BlogApp: App {
       BGBookMarksPage(store: ObservableStore(store: bookMarksPageStore))
         .environment(\.managedObjectContext, BGCoreDataManager.shared.classificationContainer.viewContext)
 //        .onOpenURL { url in
-//          BlogContentView(webViewModel: WebViewModel(url: url.absoluteString))
+//          BGContentView(webViewModel: WebViewModel(url: url.absoluteString))
 //        }
     }
   }

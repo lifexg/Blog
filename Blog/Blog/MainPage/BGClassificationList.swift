@@ -1,5 +1,5 @@
 //
-//  ClassificationList.swift
+//  BGClassificationList.swift
 //  Blog
 //
 //  Created by fexg on 2022/6/17.
@@ -9,7 +9,7 @@ import SwiftUI
 import BGUI
 import CoreData
 
-struct ClassificationList: View {
+struct BGClassificationList: View {
    var item:ClassificationModel
   @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \ClassificationDetailModel.sort, ascending: true)],
       animation: .default)
@@ -28,7 +28,7 @@ struct ClassificationList: View {
     List {
       ForEach(items) { item in
         NavigationLink {
-          BlogContentView(webViewModel: WebViewModel(url: item.link ?? ""))
+          BGContentView(webViewModel: WebViewModel(url: item.link ?? ""))
         } label: {
           
           if #available(iOS 15.0, *) {
@@ -65,7 +65,7 @@ struct ClassificationList: View {
 }
 
 // action
-extension ClassificationList {
+extension BGClassificationList {
   
   
   func deleteFile(at indexSet: IndexSet) {
@@ -109,8 +109,8 @@ struct ClassificationDetailCell: View {
 }
 
 
-struct ClassificationList_Previews: PreviewProvider {
+struct BGClassificationList_Previews: PreviewProvider {
   static var previews: some View {
-    ClassificationList(item: ClassificationModel())
+    BGClassificationList(item: ClassificationModel())
   }
 }

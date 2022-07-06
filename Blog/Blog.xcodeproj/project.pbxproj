@@ -13,10 +13,10 @@
 		011C5CF1285B34BF001D461E /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 011C5CF0285B34BF001D461E /* Launch Screen.storyboard */; };
 		0148DC70285C26A700AA92C3 /* BlogAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0148DC6F285C26A700AA92C3 /* BlogAPI.swift */; };
 		0148DC76285C27B200AA92C3 /* BlogClassification.json in Resources */ = {isa = PBXBuildFile; fileRef = 0148DC75285C27B200AA92C3 /* BlogClassification.json */; };
-		015E3D78285C812B008F52C1 /* MainPageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015E3D76285C812B008F52C1 /* MainPageCell.swift */; };
-		015E3D7B285C81B9008F52C1 /* MainPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015E3D7A285C81B9008F52C1 /* MainPage.swift */; };
-		015E3D7F285C918D008F52C1 /* ClassificationList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015E3D7E285C918D008F52C1 /* ClassificationList.swift */; };
-		015E3D81285C96C5008F52C1 /* BlogContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015E3D80285C96C5008F52C1 /* BlogContentView.swift */; };
+		015E3D78285C812B008F52C1 /* BGBookMarksPageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015E3D76285C812B008F52C1 /* BGBookMarksPageCell.swift */; };
+		015E3D7B285C81B9008F52C1 /* BGBookMarksPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015E3D7A285C81B9008F52C1 /* BGBookMarksPage.swift */; };
+		015E3D7F285C918D008F52C1 /* BGClassificationList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015E3D7E285C918D008F52C1 /* BGClassificationList.swift */; };
+		015E3D81285C96C5008F52C1 /* BGContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015E3D80285C96C5008F52C1 /* BGContentView.swift */; };
 		018C37FF286B2CEB001C45A9 /* BGUI in Frameworks */ = {isa = PBXBuildFile; productRef = 018C37FE286B2CEB001C45A9 /* BGUI */; };
 		018C3801286B2CEE001C45A9 /* ReSwiftExtention in Frameworks */ = {isa = PBXBuildFile; productRef = 018C3800286B2CEE001C45A9 /* ReSwiftExtention */; };
 		018C381B286EDC3D001C45A9 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018C381A286EDC3D001C45A9 /* WidgetKit.framework */; };
@@ -68,10 +68,10 @@
 		011C5CF0285B34BF001D461E /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		0148DC6F285C26A700AA92C3 /* BlogAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogAPI.swift; sourceTree = "<group>"; };
 		0148DC75285C27B200AA92C3 /* BlogClassification.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = BlogClassification.json; sourceTree = "<group>"; };
-		015E3D76285C812B008F52C1 /* MainPageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPageCell.swift; sourceTree = "<group>"; };
-		015E3D7A285C81B9008F52C1 /* MainPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPage.swift; sourceTree = "<group>"; };
-		015E3D7E285C918D008F52C1 /* ClassificationList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassificationList.swift; sourceTree = "<group>"; };
-		015E3D80285C96C5008F52C1 /* BlogContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogContentView.swift; sourceTree = "<group>"; };
+		015E3D76285C812B008F52C1 /* BGBookMarksPageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BGBookMarksPageCell.swift; sourceTree = "<group>"; };
+		015E3D7A285C81B9008F52C1 /* BGBookMarksPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BGBookMarksPage.swift; sourceTree = "<group>"; };
+		015E3D7E285C918D008F52C1 /* BGClassificationList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BGClassificationList.swift; sourceTree = "<group>"; };
+		015E3D80285C96C5008F52C1 /* BGContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BGContentView.swift; sourceTree = "<group>"; };
 		015E3D82285CA147008F52C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		018C3819286EDC3D001C45A9 /* WidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		018C381A286EDC3D001C45A9 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
@@ -176,10 +176,10 @@
 			isa = PBXGroup;
 			children = (
 				01FE53222865986600CE6931 /* Redux */,
-				015E3D7A285C81B9008F52C1 /* MainPage.swift */,
-				015E3D76285C812B008F52C1 /* MainPageCell.swift */,
-				015E3D7E285C918D008F52C1 /* ClassificationList.swift */,
-				015E3D80285C96C5008F52C1 /* BlogContentView.swift */,
+				015E3D7A285C81B9008F52C1 /* BGBookMarksPage.swift */,
+				015E3D76285C812B008F52C1 /* BGBookMarksPageCell.swift */,
+				015E3D7E285C918D008F52C1 /* BGClassificationList.swift */,
+				015E3D80285C96C5008F52C1 /* BGContentView.swift */,
 			);
 			path = MainPage;
 			sourceTree = "<group>";
@@ -336,10 +336,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				015E3D7F285C918D008F52C1 /* ClassificationList.swift in Sources */,
+				015E3D7F285C918D008F52C1 /* BGClassificationList.swift in Sources */,
 				018C3826286EDC40001C45A9 /* Widget.intentdefinition in Sources */,
-				015E3D7B285C81B9008F52C1 /* MainPage.swift in Sources */,
-				015E3D81285C96C5008F52C1 /* BlogContentView.swift in Sources */,
+				015E3D7B285C81B9008F52C1 /* BGBookMarksPage.swift in Sources */,
+				015E3D81285C96C5008F52C1 /* BGContentView.swift in Sources */,
 				01FE532A2865A0CB00CE6931 /* State.swift in Sources */,
 				01FE532628659E8600CE6931 /* Store.swift in Sources */,
 				01FE5356286AA18E00CE6931 /* BGCoreDataManager.swift in Sources */,
@@ -347,7 +347,7 @@
 				0148DC70285C26A700AA92C3 /* BlogAPI.swift in Sources */,
 				01FE532828659E9800CE6931 /* Reducer.swift in Sources */,
 				01FE532428659E8000CE6931 /* Action.swift in Sources */,
-				015E3D78285C812B008F52C1 /* MainPageCell.swift in Sources */,
+				015E3D78285C812B008F52C1 /* BGBookMarksPageCell.swift in Sources */,
 				011C5CE3285B2D73001D461E /* BlogApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
