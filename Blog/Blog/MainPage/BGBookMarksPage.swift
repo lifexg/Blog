@@ -70,7 +70,7 @@ struct BGBookMarksPage: View {
           }
         }
         
-        NavigationLink(destination:BGContentView(webViewModel: WebViewModel(url: urlStr)), isActive: $isCommit) {
+        NavigationLink(destination:BGContentView(webViewModel: WebViewModel(url: urlStr, name: "")), isActive: $isCommit) {
         }
 
       }

@@ -7,6 +7,7 @@
 
 import SwiftUI
 import WebKit
+import WidgetKit
 
 struct BGContentView: View {
   //  @Binding var link: String
@@ -32,13 +33,40 @@ struct BGContentView: View {
           .frame(width: 0, height: 0, alignment: .center)
       }
     })
-    )
+    ).onAppear(perform: recentlyRead)
   }
+  
+  func recentlyRead() {
+    let name = webViewModel.name
+    let url = webViewModel.url
+  
+//    bookMarksPageStore.dispatch(BGBookMarksPageReadDetailAction(name: name, link: url))
+    readDetail(name: name, link: url)
+    
+  }
+  
+  func readDetail(name: String, link: String) {
+    let key = "iCloudRecentlyReadKey"
+    if var arr = NSUbiquitousKeyValueStore.default.array(forKey: key) {
+      arr.insert(["name":name, "link": link], at: 0)
+      
+      if arr.count > 30 {
+        arr.removeLast(30)
+      }
+      NSUbiquitousKeyValueStore.default.set(arr, forKey: key)
+    } else {
+      NSUbiquitousKeyValueStore.default.set([["name":name, "link": link]], forKey: key)
+    }
+    NSUbiquitousKeyValueStore.default.synchronize()
+    WidgetCenter.shared.reloadTimelines(ofKind: "NowWidget2")
+  }
+
+
 }
 
 struct BGContentView_Previews: PreviewProvider {
   static var previews: some View {
-    BGContentView(webViewModel: WebViewModel(url: "https://www.baidu.com"))
+    BGContentView(webViewModel: WebViewModel(url: "https://www.baidu.com", name: "百度"))
   }
 }
 
@@ -49,9 +77,11 @@ class WebViewModel: ObservableObject {
   @Published var title: String = ""
   
   var url: String
+  var name: String
   
-  init(url: String) {
+  init(url: String, name: String) {
     self.url = url
+    self.name = name
   }
 }
 
@@ -102,6 +132,7 @@ extension WebViewContainer {
       webViewModel.isLoading = false
       webViewModel.title = webView.title ?? ""
       webViewModel.canGoBack = webView.canGoBack
+//      bookMarksPageStore.dispatch(BGBookMarksPageReadDetailAction(name: webViewModel.name, link: webViewModel.url))
     }
     
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {

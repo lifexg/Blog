@@ -9,6 +9,7 @@ import Foundation
 import WidgetKit
 import SwiftUI
 import Intents
+import CloudKit
 
 struct Poster {
   let author: String
@@ -20,6 +21,7 @@ struct PosterEntry: TimelineEntry {
   let date: Date
   let poster: Poster
 }
+
 
 struct PosterData {
   static func getTodayPoster(completion: @escaping (Result<Poster, Error>) -> Void) {
@@ -100,29 +102,53 @@ struct PosterProvider: TimelineProvider {
 
 struct NowPosterWidgetEntryView : View {
   var entry: PosterProvider.Entry
+  let key = "iCloudRecentlyReadKey"
+  @State var arr = NSUbiquitousKeyValueStore.default.array(forKey: "iCloudRecentlyReadKey") ?? []
+//  var arr: [String]?
   var body: some View {
-    ZStack{
-      if let image = entry.poster.posterImage {
-        Link(destination: URL(string: "https://www.jianshu.com/u/bc4a806f89c5")!) {
-                VStack {
-                  Image(uiImage: image)
-                    .resizable()
-                    .frame(minWidth: 169, maxWidth: .infinity, minHeight: 169, maxHeight: .infinity, alignment: .center)
-                    .scaledToFill()
-                    .edgesIgnoringSafeArea(.all)
-                    .aspectRatio(contentMode: .fill)
-                    .widgetURL(URL(string: "https://www.jianshu.com/u/bc4a806f89c5"))
-                }
-            }
+    
+    HStack {
+      Text("最近阅读").background(Color.yellow)//.padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+      if let arr = arr as? [(String, String)]{
+        if arr.count > 2 {
+          Text(arr[2].0).widgetURL(URL(string: arr[2].1))
+        }
+        if arr.count > 1 {
+          Text(arr[1].0).widgetURL(URL(string: arr[1].1))
+        }
+        if arr.count > 0 {
+          Text(arr[0].0).widgetURL(URL(string: arr[0].1))
+        }
       }
-      
-      Text(entry.poster.content)
-        .foregroundColor(Color.white)
-        .lineLimit(4)
-        .font(.system(size: 14))
-        .padding(.horizontal)
-//        .widgetURL(URL(string: "跳转链接Text"))
     }
+    
+//    ZStack{
+      
+//      if let image = entry.poster.posterImage {
+//        Link(destination: URL(string: "https://www.jianshu.com/u/bc4a806f89c5")!) {
+//                VStack {
+                  
+//                  Image(uiImage: image)
+//                    .resizable()
+//                    .frame(minWidth: 169, maxWidth: .infinity, minHeight: 169, maxHeight: .infinity, alignment: .center)
+//                    .scaledToFill()
+//                    .edgesIgnoringSafeArea(.all)
+//                    .aspectRatio(contentMode: .fill)
+//                    .widgetURL(URL(string: "https://www.jianshu.com/u/bc4a806f89c5"))
+//                }
+//            }
+//      }
+      
+      
+
+      
+//      Text(entry.poster.content)
+//        .foregroundColor(Color.white)
+//        .lineLimit(4)
+//        .font(.system(size: 14))
+//        .padding(.horizontal)
+//        .widgetURL(URL(string: "跳转链接Text"))
+//    }
 //    .widgetURL(URL(string: "https://www.jianshu.com/u/bc4a806f89c5"))
   }
 }

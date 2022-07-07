@@ -9,6 +9,7 @@ import Foundation
 import ReSwift
 import ReSwiftExtention
 import CoreData
+import WidgetKit
 
 extension BGBookMarksPageState {
   func classificationList() {
@@ -132,6 +133,21 @@ extension BGBookMarksPageState {
       assertionFailure()
     }
   }
-
+  
+  func readDetail(name: String, link: String) {
+    let key = "iCloudRecentlyReadKey"
+    if var arr = NSUbiquitousKeyValueStore.default.array(forKey: key) {
+      arr.insert((name, link), at: 0)
+      
+      if arr.count > 30 {
+        arr.removeLast(30)
+      }
+      NSUbiquitousKeyValueStore.default.set(arr, forKey: key)
+    } else {
+      NSUbiquitousKeyValueStore.default.set([(name, link)], forKey: key)
+    }
+    NSUbiquitousKeyValueStore.default.synchronize()
+    WidgetCenter.shared.reloadTimelines(ofKind: "NowWidget2")
+  }
 }
 

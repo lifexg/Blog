@@ -26,6 +26,8 @@ func BGBookMarksPageReducer(action: Action, state: BGBookMarksPageState?) -> BGB
     state.editClassificationFolderName(item: action.item, name: action.name)
   case let action as BGBookMarksPageEditDetailAction:
     state.editClassificationDetail(item: action.item)
+  case let action as BGBookMarksPageReadDetailAction:
+    state.readDetail(name: action.name, link: action.link)
   default:
     break
   }

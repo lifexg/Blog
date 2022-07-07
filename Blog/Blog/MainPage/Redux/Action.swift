@@ -42,4 +42,7 @@ struct BGBookMarksPageEditDetailAction: Action {
   let item: ClassificationDetailModel
 }
 
-
+struct BGBookMarksPageReadDetailAction: Action {
+  let name: String
+  let link: String
+}

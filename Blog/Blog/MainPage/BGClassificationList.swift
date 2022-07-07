@@ -28,7 +28,7 @@ struct BGClassificationList: View {
     List {
       ForEach(items) { item in
         NavigationLink {
-          BGContentView(webViewModel: WebViewModel(url: item.link ?? ""))
+          BGContentView(webViewModel: WebViewModel(url: item.link ?? "", name: item.name ?? ""))
         } label: {
           
           if #available(iOS 15.0, *) {
@@ -86,7 +86,7 @@ extension BGClassificationList {
     }
   }
   
-  func  editFolder(text: [String?]) {
+  func editFolder(text: [String?]) {
     let name = text[0]
     let link = text[1]
     if let name = name, !name.isEmpty,
