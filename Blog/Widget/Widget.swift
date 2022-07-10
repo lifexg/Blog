@@ -35,9 +35,6 @@ struct BGRecentlyReadProvider: TimelineProvider {
   // 进行数据的预处理，转化成Entry
   func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
     let updateDate = Calendar.current.date(byAdding: .hour, value: 1, to: Date())!
-    let key = "iCloudInitedKey"
-    let ool = NSUbiquitousKeyValueStore.default.bool(forKey: key)
-    print(ool)
     if let arr = NSUbiquitousKeyValueStore.default.array(forKey: "iCloudRecentlyReadKey") as? [[String: String]] {
       let timeline = Timeline(entries: [BGRecentlyReadEntry(date: Date(), arr: arr)], policy: .after(updateDate))
       completion(timeline)
@@ -70,7 +67,7 @@ struct NowWidgetEntryView : View {
   var entry: BGRecentlyReadProvider.Entry
   var body: some View {
     
-    HStack {
+    VStack {
       Text("最近阅读")//.background(Color.yellow)//.padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
       let arr = entry.arr
       if arr.count > 2 {
