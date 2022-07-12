@@ -67,18 +67,35 @@ struct NowWidgetEntryView : View {
   var entry: BGRecentlyReadProvider.Entry
   var body: some View {
     
-    VStack {
-      Text("最近阅读")//.background(Color.yellow)//.padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+    VStack(alignment: .leading, spacing: 0, content: {
+      Spacer()
+      VStack(alignment: .leading, spacing: 0) {
+        Label("最近阅读", systemImage: "book.fill")
+          .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
+      }
       let arr = entry.arr
-      if arr.count > 2 {
-        Text(arr[2]["name"]!).widgetURL(URL(string: arr[2]["link"]!))
+      if arr.count > 0 {
+        Spacer()
+        getText(name: arr[0]["name"]!, link: arr[0]["link"]!)
       }
       if arr.count > 1 {
-        Text(arr[1]["name"]!).widgetURL(URL(string: arr[1]["link"]!))
+        Spacer()
+        getText(name: arr[1]["name"]!, link: arr[1]["link"]!)
       }
-      if arr.count > 0 {
-        Text(arr[0]["name"]!).widgetURL(URL(string: arr[0]["link"]!))
+      if arr.count > 2 {
+        Spacer()
+        getText(name: arr[2]["name"]!, link: arr[2]["link"]!)
       }
+      Spacer()
+    })
+  }
+  
+  func getText(name: String, link: String) -> some View {
+    Link(destination: URL(string: link)!) {
+      Text(name)
+        .font(.footnote)
+        .lineLimit(1)
+        .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
     }
   }
 }

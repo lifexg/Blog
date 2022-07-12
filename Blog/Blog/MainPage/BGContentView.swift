@@ -48,7 +48,24 @@ struct BGContentView: View {
   func readDetail(name: String, link: String) {
     let key = "iCloudRecentlyReadKey"
     if var arr = NSUbiquitousKeyValueStore.default.array(forKey: key) {
-      arr.insert(["name":name, "link": link], at: 0)
+      var index: Int?
+//      arr.enumerated().forEach { (offset, item) in
+//        if let item = item as? [String : String], item["link"] == link {
+//          index = offset
+//          break
+//        }
+//      }
+      for (offset, item) in arr.enumerated() {
+        if let item = item as? [String : String], item["link"] == link {
+          index = offset
+          break
+        }
+      }
+      if let index = index {
+        arr.move(fromOffsets: IndexSet(integer: index), toOffset: 0)
+      } else {
+        arr.insert(["name":name, "link": link], at: 0)
+      }
       
       if arr.count > 30 {
         arr.removeLast(30)
